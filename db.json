@@ -36,29 +36,98 @@
   ],
   "sidebarItems": [
     {
-      "title": "Doanh thu",
-      "icon": "../assets/icons/icon-dollar.png",
+      "title": "Tiền mặt ngân hàng",
+      "icon": "../assets/icons-svg/icon-dollar.svg",
       "subMenu": [
         "Tháng này",
         "Tháng trước",
         "Theo quý"
-      ],
-      "open": false
+      ]
     },
     {
       "title": "Mua hàng",
-      "icon": "../assets/icons/icon-dollar.png",
-      "subMenu": null,
-      "open": false
+      "icon": "../assets/icons-svg/icon-bag-happy.svg",
+      "subMenu": null
     },
     {
-      "title": "Báo cáo",
-      "icon": "../assets/icons/icon-dollar.png",
+      "title": "Bán hàng",
+      "icon": "../assets/icons-svg/icon-shopping-cart.svg",
       "subMenu": [
         "Chi tiết",
         "Tổng hợp"
-      ],
-      "open": false
+      ]
+    },
+    {
+      "title": "Kho",
+      "icon": "../assets/icons-svg/icon-home.svg",
+      "subMenu": [
+        "Chi tiết",
+        "Tổng hợp"
+      ]
+    },
+    {
+      "title": "Tổng hợp",
+      "icon": "../assets/icons-svg/icon-document.svg",
+      "subMenu": [
+        "Chi tiết",
+        "Tổng hợp"
+      ]
+    },
+    {
+      "title": "Quản lý HĐ",
+      "icon": "../assets/icons-svg/icon-receipt-minus.svg",
+      "subMenu": [
+        "Chi tiết",
+        "Tổng hợp"
+      ]
+    },
+    {
+      "title": "HĐ điện tử",
+      "icon": "../assets/icons-svg/icon-receipt.svg",
+      "subMenu": [
+        "Chi tiết",
+        "Tổng hợp"
+      ]
+    },
+    {
+      "title": "Hợp đồng HĐ từ thuế",
+      "icon": "../assets/icons-svg/icon-refresh-square.svg",
+      "subMenu": [
+        "Chi tiết",
+        "Tổng hợp"
+      ]
+    },
+    {
+      "title": "Công cụ dụng cụ",
+      "icon": "../assets/icons-svg/icon-setting.svg",
+      "subMenu": [
+        "Chi tiết",
+        "Tổng hợp"
+      ]
+    },
+    {
+      "title": "Tài sản cố định",
+      "icon": "../assets/icons-svg/icon-money-tick.svg",
+      "subMenu": [
+        "Chi tiết",
+        "Tổng hợp"
+      ]
+    },
+    {
+      "title": "Lương",
+      "icon": "../assets/icons-svg/icon-wallet-minus.svg",
+      "subMenu": [
+        "Chi tiết",
+        "Tổng hợp"
+      ]
+    },
+    {
+      "title": "Hợp đồng",
+      "icon": "../assets/icons-svg/icon-document-text.svg",
+      "subMenu": [
+        "Chi tiết",
+        "Tổng hợp"
+      ]
     }
   ]
 }

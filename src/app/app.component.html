@@ -1,9 +1,9 @@
 <main>
-  <div class="container">
+  <div class="container" [class.sidebar-pinned]="isSidebarPinned">
     <nav class="nav">
       <div class="nav__left">
-        <div class="nav__logo">
-          <img src="../assets/logo-eb.png" alt="logo">
+        <div class="sidebar__mobile-toggle" (click)="toggleMobileSidebar()">
+          ☰
         </div>
 
         <ul class="nav__menu">
@@ -59,15 +59,19 @@
       </div>
     </nav>
 
-    <label for="nav-toggle" class="mobile__nav">
-      <img src="../assets/icons/icon-arrow-down-bl.png" alt="icon-arrow-down">
-    </label>
+    <aside class="sidebar" [class.pinned]="isSidebarPinned" [class.mobile-open]="isMobileSidebarOpen"
+      (mouseenter)="onSidebarHover(true)" (mouseleave)="onSidebarHover(false)">
 
-    <input type="checkbox" id="nav-toggle" hidden>
-
-    <aside class="sidebar" [class.pinned]="isSidebarPinned" (mouseenter)="onSidebarHover(true)" (mouseleave)="onSidebarHover(false)">
+      <div class="sidebar__logo">
+        <img src="../assets/logo-eb.png" alt="logo">
+        <div class="sidebar__logo-text">Easy Book</div>
+      </div>
       <button class="sidebar__pin" (click)="toggleSidebarPin($event)">
-        x
+        📌
+      </button>
+
+       <button class="sidebar__close" (click)="toggleMobileSidebar()">
+        X
       </button>
       <div class="sidebar__item" *ngFor="let item of sidebarItems; let i = index" [class.open]="isItemOpen(i)">
         <div class="sidebar__item-content" (click)="toggleSubmenu(i)" [class.active-parent]="isParentActive(i)">

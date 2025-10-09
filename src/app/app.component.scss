@@ -92,9 +92,9 @@ main {
     height: rem(64);
     position: fixed;
     top: 0;
-    left: 0;
+    left: rem(72);
     right: 0;
-    z-index: 100;
+    z-index: 10;
     // box-shadow: 0px 30px 70px -11px rgba(0, 0, 0, 0.54);
 
     &__left {
@@ -103,15 +103,7 @@ main {
         flex: 1;
     }
 
-    &__logo {
-        width: rem(47);
-        height: rem(47);
-        margin-right: rem(14);
 
-        img {
-            @include img-cover;
-        }
-    }
 
     &__menu {
         display: flex;
@@ -207,7 +199,7 @@ main {
 .sidebar {
     position: fixed;
     left: 0;
-    top: rem(56);
+    top: 0;
     bottom: 0;
     width: 100%;
     max-width: rem(72);
@@ -215,18 +207,39 @@ main {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    padding: rem(20) rem(12);
+    padding: rem(10) rem(12);
     z-index: 50;
     transition: max-width 0.4s ease, box-shadow 0.3s ease;
+
+    &__logo {
+        min-width: rem(47);
+        height: rem(47);
+        margin-right: rem(14);
+        display: flex;
+        align-items: center;
+        gap: rem(4);
+
+        img {
+            @include img-cover;
+        }
+
+        &-text {
+            display: none;
+            width: 100%;
+            min-width: 100%;
+        }
+    }
+
 
     // ==== ITEM ====
     &__item {
         width: 100%;
         display: flex;
+        margin-top: rem(2);
         flex-direction: column;
         border-top: rem(2) solid #e6e6e6;
         cursor: pointer;
-        padding: rem(4) 0;
+        padding: rem(2) 0;
         transition: all 0.3s ease;
 
         &:first-child {
@@ -341,7 +354,6 @@ main {
     &:hover {
         max-width: rem(240);
         box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
-
     }
 
     &:hover .sidebar__item {
@@ -349,7 +361,9 @@ main {
     }
 
     &:hover div .sidebar__item-title,
-    &:hover .sidebar__submenu-icon {
+    &:hover .sidebar__submenu-icon,
+    &:hover .sidebar__pin,
+    &:hover .sidebar__logo .sidebar__logo-text {
         display: block;
         transition: all 0.3s ease;
     }
@@ -362,8 +376,9 @@ main {
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    // pin
-    &__pin {
+    // ==== PIN ====
+    &__pin,
+    &__close {
         position: absolute;
         top: rem(10);
         right: rem(-10);
@@ -373,6 +388,7 @@ main {
         padding: rem(2) rem(6);
         cursor: pointer;
         align-self: flex-end;
+        display: none;
 
         svg {
             color: #666;
@@ -388,6 +404,7 @@ main {
         max-width: rem(240) !important;
         box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
         transition: none !important;
+        transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     &.pinned:hover {
@@ -395,19 +412,31 @@ main {
     }
 
     &.pinned .sidebar__item-title,
-    &.pinned .sidebar__submenu-icon {
+    &.pinned .sidebar__submenu-icon,
+    &.pinned .sidebar__logo .sidebar__logo-text,
+    &.pinned .sidebar__pin {
         display: inline-block !important;
         opacity: 1;
         transform: none;
     }
 }
 
+.sidebar.pinned+.main {
+    margin-left: rem(240);
+}
+
+.container.sidebar-pinned .nav {
+    left: rem(236);
+    // margin-left: rem(236);
+    // padding-left: rem(200);
+}
 
 // main content
 .main {
     margin-left: rem(72);
     margin-top: rem(64);
     padding: rem(16);
+    transition: margin-left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 
     &__header {
         @include flex-between;
@@ -949,16 +978,8 @@ main {
     }
 }
 
-.mobile__nav {
+.sidebar__mobile-toggle {
     display: none;
-    position: fixed;
-    cursor: pointer;
-    z-index: 100;
-    background-color: white;
-    left: 0;
-    top: rem(64);
-    min-width: rem(50);
-    padding: rem(12);
 }
 
 /* (< 576px) */
@@ -982,21 +1003,9 @@ main {
         display: block !important;
     }
 
-    .mobile__nav {
-        display: block !important
-    }
-
-    #nav-toggle:checked~.sidebar {
-        display: block;
-        position: fixed;
-        margin-top: rem(40);
-    }
-
-    // #nav-toggle:checked~.main {
-    //     // margin-left: rem(55);
-    // }
-
     .nav {
+        left: 0;
+
         &__menu {
             display: none;
         }
@@ -1024,17 +1033,24 @@ main {
     }
 
     .sidebar {
-        width: rem(50);
-        padding: rem(15) 0;
+        max-width: rem(50);
+        padding: 0;
         display: none;
-
-        &__item {}
+        justify-content: center;
 
         &__icon {
             img {
                 width: rem(20);
                 height: rem(20);
             }
+        }
+
+        &__pin {
+            display: none !important;
+        }
+
+        &__close {
+            display: block !important;
         }
     }
 
@@ -1172,7 +1188,19 @@ main {
         }
     }
 
+    // mobile
+    .sidebar__mobile-toggle {
+        display: block;
+        font-size: rem(32);
+        cursor: pointer;
+    }
 
+    .sidebar.mobile-open {
+        display: block !important;
+        &__item {
+            display: block;
+        }
+    }
 }
 
 /* (576px – 767px) */

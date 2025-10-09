@@ -14,7 +14,7 @@ export class AppComponent {
 
   isSidebarHovered = false;
   isSidebarPinned = false;
-
+  isMobileSidebarOpen = false;
   activeParentIndex: number | null = null;
   activeSubIndex: number | null = null;
 
@@ -43,6 +43,10 @@ export class AppComponent {
       this.activeParentIndex = index;
       this.activeSubIndex = null;
     }
+  }
+
+  toggleMobileSidebar(): void {
+    this.isMobileSidebarOpen = !this.isMobileSidebarOpen;
   }
 
   setActiveSubmenu(parentIndex: number, subIndex: number, event: Event) {
