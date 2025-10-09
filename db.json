@@ -1,0 +1,64 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "ngayChungTu": "01/06/2025",
+      "ngayHachToan": "01/06/2025",
+      "soChungTu": 25,
+      "soHoaDon": 25,
+      "dienGiai": "Bán hàng thụ tiên",
+      "doiTuong": "Vietnam Airlines",
+      "loaiChungTu": "Bán hàng",
+      "soTien": "25,000.00"
+    },
+    {
+      "id": 2,
+      "ngayChungTu": "02/06/2025",
+      "ngayHachToan": "02/06/2025",
+      "soChungTu": 26,
+      "soHoaDon": 30,
+      "dienGiai": "Mua hàng nhập kho",
+      "doiTuong": "Vinamilk ufhiwuefuw   l efu qìn ưi qfpnfnn wuefn Ss",
+      "loaiChungTu": "Mua hàng",
+      "soTien": "120,000.00"
+    },
+    {
+      "id": 2,
+      "ngayChungTu": "02/06/2025",
+      "ngayHachToan": "02/06/2025",
+      "soChungTu": 26,
+      "soHoaDon": 30,
+      "dienGiai": "Mua hàng nhập kho",
+      "doiTuong": "Vinamilk ufhiwuefuw   l efu qìn ưi qfpnfnn wuefn Ss",
+      "loaiChungTu": "Mua hàng",
+      "soTien": "120,000.00"
+    }
+  ],
+  "sidebarItems": [
+    {
+      "title": "Doanh thu",
+      "icon": "../assets/icons/icon-dollar.png",
+      "subMenu": [
+        "Tháng này",
+        "Tháng trước",
+        "Theo quý"
+      ],
+      "open": false
+    },
+    {
+      "title": "Mua hàng",
+      "icon": "../assets/icons/icon-dollar.png",
+      "subMenu": null,
+      "open": false
+    },
+    {
+      "title": "Báo cáo",
+      "icon": "../assets/icons/icon-dollar.png",
+      "subMenu": [
+        "Chi tiết",
+        "Tổng hợp"
+      ],
+      "open": false
+    }
+  ]
+}
