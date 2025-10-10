@@ -245,8 +245,7 @@
               </thead>
               <tbody>
 
-
-                <tr *ngFor="let transaction of transactions">
+                <tr *ngFor="let transaction of pagedTransactions">
                   <td class="tbody-sticky--left">
                     <div>
                       <input type="checkbox" class="checkbox">
@@ -290,18 +289,32 @@
           </div>
         </div>
         <div class="main__table-pagination-controls">
-          <button class="page-btn">
+          <button class="page-btn" (click)="prevPage()" [disabled]="currentPage === 1">
             <img src="../assets/icons/icon-arrow-left.png" alt="icon-arrow-left">
           </button>
-          <button class="page-btn active">1</button>
+          <!-- <button class="page-btn active">1</button>
           <button class="page-btn">2</button>
           <button class="page-btn">3</button>
           <button class="page-btn">4</button>
           <span class="ellipsis">
             <img src="../assets/icons/icon-dot-bl.png" alt="icon-Dot">
           </span>
-          <button class="page-btn">12</button>
-          <button class="page-btn">
+          <button class="page-btn">12</button> -->
+          <ng-container *ngFor="let page of visiblePages">
+            <ng-container *ngIf="page !== 0; else dots">
+              <button class="page-btn" [class.active]="currentPage === page" (click)="goToPage(page)">
+                {{ page }}
+              </button>
+            </ng-container>
+
+            <!-- dấu ... -->
+            <ng-template #dots>
+              <span class="ellipsis">
+                <img src="../assets/icons/icon-dot-bl.png" alt="icon-dot" />
+              </span>
+            </ng-template>
+          </ng-container>
+          <button class="page-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
             <img src="../assets/icons/icon-arrow-right.png" alt="icon-arrow-right">
           </button>
         </div>

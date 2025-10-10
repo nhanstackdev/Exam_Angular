@@ -11,6 +11,12 @@ export class AppComponent {
 
   transactions: Transaction[] = [];
   sidebarItems: SidebarItems[] = [];
+  pagedTransactions: Transaction[] = [];
+
+  currentPage: number = 1;
+  pageSize: number = 10;
+  totalPages: number = 0;
+  visiblePages: number[] = [];
 
   isSidebarHovered = false;
   isSidebarPinned = false;
@@ -23,10 +29,59 @@ export class AppComponent {
   ngOnInit(): void {
     this.transactionService.getAll().subscribe(data => {
       this.transactions = data;
+      this.totalPages = Math.ceil(this.transactions.length / this.pageSize);
+      this.updatePagedTransactions();
+      this.updateVisiblePages();
     });
     this.transactionService.getMenu().subscribe(data => {
       this.sidebarItems = data;
     })
+  }
+
+  updatePagedTransactions() {
+    const start = (this.currentPage - 1) * this.pageSize;
+    const end = start + this.pageSize;
+    this.pagedTransactions = this.transactions.slice(start, end);
+  }
+
+  goToPage(page: number) {
+    if (page < 1 || page > this.totalPages) return;
+    this.currentPage = page;
+    this.updatePagedTransactions();
+    this.updateVisiblePages();
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePagedTransactions();
+      this.updateVisiblePages();
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePagedTransactions();
+      this.updateVisiblePages();
+    }
+  }
+
+  updateVisiblePages() {
+    const total = this.totalPages;
+    const current = this.currentPage;
+
+    if (total <= 6) {
+      this.visiblePages = Array.from({ length: total }, (_, i) => i + 1);
+    } else {
+      if (current <= 3) {
+        this.visiblePages = [1, 2, 3, 4, 0, total]; // 0 = dấu ...
+      } else if (current >= total - 2) {
+        this.visiblePages = [1, 0, total - 3, total - 2, total - 1, total];
+      } else {
+        this.visiblePages = [1, 0, current - 1, current, current + 1, 0, total];
+      }
+    }
   }
 
   onSidebarHover(state: boolean) {
