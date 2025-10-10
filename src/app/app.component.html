@@ -70,7 +70,7 @@
         📌
       </button>
 
-       <button class="sidebar__close" (click)="toggleMobileSidebar()">
+      <button class="sidebar__close" (click)="toggleMobileSidebar()">
         X
       </button>
       <div class="sidebar__item" *ngFor="let item of sidebarItems; let i = index" [class.open]="isItemOpen(i)">
@@ -229,24 +229,25 @@
                     </div>
                   </th>
                 </tr>
+                <tr class="total__row">
+                  <th class="total__row-sticky--left"></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>1233</th>
+                  <th class="total__row-sticky--right"></th>
+                </tr>
               </thead>
               <tbody>
-                <tr class="total__row">
-                  <td class="total__row-sticky--left"></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>1233</td>
-                  <td class="total__row-sticky--right"></td>
-                </tr>
+
 
                 <tr *ngFor="let transaction of transactions">
-                  <td class="main__table-sticky--left">
+                  <td class="tbody-sticky--left">
                     <div>
                       <input type="checkbox" class="checkbox">
                     </div>
@@ -260,7 +261,7 @@
                   <td class="text-left" style="max-width: 330px;">{{ transaction.doiTuong }}</td>
                   <td class="text-left">{{ transaction.loaiChungTu }}</td>
                   <td class="text-right">{{ transaction.soTien }}</td>
-                  <td class="main__table-sticky--right">
+                  <td class="tbody-sticky--right">
                     <div class="items-actions">
                       <div><img src="../assets/icons/icon-message-edit.png" alt="icon-message-edit"></div>
                       <div><img src="../assets/icons/icon-copy.png" alt="icon-copy"></div>

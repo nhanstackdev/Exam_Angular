@@ -538,6 +538,7 @@ main {
 
         &-sticky--left {
             position: sticky;
+            top: 0;
             left: 0;
             z-index: 20;
             background-color: #f7fafc;
@@ -546,6 +547,7 @@ main {
 
         &-sticky--right {
             position: sticky;
+            top: 0;
             right: 0;
             z-index: 20;
             background-color: #f7fafc;
@@ -554,13 +556,15 @@ main {
 
         &-wrraper {
             overflow-x: auto;
-            overflow-y: visible;
+            max-height: 500px;
+            overflow-y: auto;
             padding-bottom: rem(12);
             position: relative;
             -webkit-overflow-scrolling: touch;
 
             &::-webkit-scrollbar {
                 height: 8px;
+                width: 8px;
             }
 
             &::-webkit-scrollbar-track {
@@ -658,9 +662,45 @@ main {
                                 }
                             }
                         }
+
+                        &.total__row {
+                            background-color: black;
+                            color: white;
+                            font-weight: 600;
+
+                            th {
+                                border: rem(1) solid #B0B0B0;
+                                background-color: black;
+                                color: white;
+                                padding: rem(12) rem(16);
+                                font-size: rem(14);
+                                text-align: right;
+
+
+                                &.total__row-sticky--left {
+                                    position: sticky;
+                                    left: 0;
+                                    top: 0;
+                                    z-index: 20;
+                                    background-color: black;
+                                    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+                                }
+
+                                &.total__row-sticky--right {
+                                    position: sticky;
+                                    right: 0;
+                                    top: 0;
+                                    z-index: 20;
+                                    background-color: black;
+                                    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.05);
+                                }
+                            }
+                        }
                     }
 
                     th {
+                        position: sticky;
+                        top: 0;
                         border: rem(1) solid #B0B0B0;
                         padding: 10px 16px;
                         text-align: left;
@@ -708,42 +748,26 @@ main {
                     tr {
                         max-height: rem(40);
 
-                        &.total__row {
-                            background-color: black;
-                            color: white;
-                            font-weight: 600;
-
-                            td {
-                                border: rem(1) solid #B0B0B0;
-                                background-color: black;
-                                color: white;
-                                padding: rem(12) rem(16);
-                                font-size: rem(14);
-                                text-align: right;
-
-
-                                &.total__row-sticky--left {
-                                    position: sticky;
-                                    left: 0;
-                                    z-index: 5;
-                                    background-color: black;
-                                    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
-                                }
-
-                                &.total__row-sticky--right {
-                                    position: sticky;
-                                    right: 0;
-                                    z-index: 5;
-                                    background-color: black;
-                                    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.05);
-                                }
-                            }
-                        }
-
                         td {
                             white-space: nowrap;
                             overflow: hidden;
                             text-overflow: ellipsis;
+
+                            &.tbody-sticky--left {
+                                position: sticky;
+                                top: 0;
+                                left: 0;
+                                background-color: #f7fafc;
+                                box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+                            }
+
+                            &.tbody-sticky--right {
+                                position: sticky;
+                                top: 0;
+                                right: 0;   
+                                background-color: #f7fafc;
+                                box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+                            }
 
                             &:first-child {
                                 padding: 0 !important;
@@ -1197,6 +1221,7 @@ main {
 
     .sidebar.mobile-open {
         display: block !important;
+
         &__item {
             display: block;
         }
