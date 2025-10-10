@@ -20,6 +20,7 @@ export class AppComponent {
 
   isSidebarHovered = false;
   isSidebarPinned = false;
+  isOptionsOpen = false;
   isMobileSidebarOpen = false;
   activeParentIndex: number | null = null;
   activeSubIndex: number | null = null;
@@ -121,8 +122,13 @@ export class AppComponent {
   isSubActive(parentIndex: number, subIndex: number): boolean {
     return this.activeParentIndex === parentIndex && this.activeSubIndex === subIndex;
   }
+
   toggleSidebarPin(event: Event) {
     event.stopPropagation();
     this.isSidebarPinned = !this.isSidebarPinned;
+  }
+
+  toggleOptions() {
+      this.isOptionsOpen = !this.isOptionsOpen;
   }
 }
