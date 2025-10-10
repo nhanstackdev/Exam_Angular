@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AppService, SidebarItems, Transaction } from './app.service';
+import { Calendar } from 'primeng/calendar';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'Asm';
@@ -14,7 +15,7 @@ export class AppComponent {
   pagedTransactions: Transaction[] = [];
 
   currentPage: number = 1;
-  pageSize: number = 10;
+  pageSize: number = 15;
   totalPages: number = 0;
   visiblePages: number[] = [];
 
@@ -22,6 +23,8 @@ export class AppComponent {
   isSidebarPinned = false;
   isOptionsOpen = false;
   isMobileSidebarOpen = false;
+  isFillter = false;
+  isCalendar = false;
   activeParentIndex: number | null = null;
   activeSubIndex: number | null = null;
 
@@ -39,6 +42,7 @@ export class AppComponent {
     })
   }
 
+  // pagination
   updatePagedTransactions() {
     const start = (this.currentPage - 1) * this.pageSize;
     const end = start + this.pageSize;
@@ -85,6 +89,7 @@ export class AppComponent {
     }
   }
 
+  // sidebar
   onSidebarHover(state: boolean) {
     if (!this.isSidebarPinned) {
       this.isSidebarHovered = state;
@@ -129,6 +134,14 @@ export class AppComponent {
   }
 
   toggleOptions() {
-      this.isOptionsOpen = !this.isOptionsOpen;
+    this.isOptionsOpen = !this.isOptionsOpen;
+  }
+
+  toggleFillter() {
+    this.isFillter = !this.isFillter;
+  }
+
+  toggleCalendar() {
+    this.isCalendar = !this.isCalendar;
   }
 }

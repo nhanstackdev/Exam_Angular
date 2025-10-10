@@ -157,7 +157,7 @@
                 <div>
                   <img src="../assets/icons-svg/icon-delete.svg" alt="">
                 </div>
-                
+
                 <div (click)="toggleOptions()">
                   <img src="../assets/icons-svg/icon-more.svg" alt="">
 
@@ -176,7 +176,7 @@
             <div>
               <img src="../assets/icons-svg/icon-setting.svg" alt="icon-setting">
             </div>
-            <div>
+            <div [class.active]="isFillter" (click)="toggleFillter()">
               <img src="../assets/icons/icon-filter.png" alt="icon-filter">
             </div>
           </div>
@@ -310,6 +310,169 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div class="main__fillter" *ngIf="isFillter">
+            <div class="main__fillter-header">
+              <div class="main__fillter-title">Bộ lọc</div>
+              <div class="main__fillter-title" (click)="toggleFillter()">
+                <img src="../assets/icons-svg/icon-close.svg" alt="">
+              </div>
+            </div>
+            <div class="main__fillter-main">
+              <div class="custom-select">
+                <div class="custom-select-title">Chọn</div>
+                <div class="select-header" tabindex="0">
+                  <span class="select-placeholder">Nhập khẩu kho</span>
+                  <span class="select-arrow">
+                    <span class="select-arrow">
+                      <img src="../assets/icons-svg/icon-arrow-down.svg" alt="icon-arrow-down">
+                    </span>
+                  </span>
+                </div>
+
+                <ul class="select-options">
+                  <li>Trong nước nhập kho</li>
+                  <li>Trang nước không nhập kho</li>
+                  <li class="active">Nhập khẩu nhập kho</li>
+                  <li>Nhập khẩu không nhập kho</li>
+                  <li>Mua hàng - Tiền mặt</li>
+                  <li>Mua hàng - Chuyển khoản</li>
+                </ul>
+              </div>
+
+              <div class="custom-select">
+                <div class="custom-select-title">Chọn</div>
+                <div class="select-header" tabindex="0">
+                  <span class="select-placeholder">VNĐ</span>
+                  <span class="select-arrow">
+                    <img src="../assets/icons-svg/icon-arrow-down.svg" alt="icon-arrow-down">
+                  </span>
+                </div>
+                <ul class="select-options">
+                  <li>Trong nước nhập kho</li>
+                  <li>Trang nước không nhập kho</li>
+                  <li class="active">Nhập khẩu nhập kho</li>
+                  <li>Nhập khẩu không nhập kho</li>
+                  <li>Mua hàng - Tiền mặt</li>
+                  <li>Mua hàng - Chuyển khoản</li>
+                </ul>
+              </div>
+
+              <div class="calendar-select">
+                <div class=" calendar-select-title">Từ ngày - đến ngày</div>
+                <div class="select-header" tabindex="0" (click)="toggleCalendar()">
+                  <span class=" select-placeholder">dd/mm/yyy</span>
+                  <span class="select-arrow">
+                    <img src="../assets/icons-svg/icon-calendar.svg" alt="icon-arrow-down">
+                  </span>
+                </div>
+                <div class="calendar" *ngIf="isCalendar">
+                  <div class="calendar__main">
+                    <div class="calendar__main-left">
+                      <ul>
+                        <li class="active">Hôm nay</li>
+                        <li>Hôm qua</li>
+                        <li>Tháng 1</li>
+                        <li>Tháng 2</li>
+                        <li>Tháng 3</li>
+                        <li>Tháng 4</li>
+                        <li>Tháng 5</li>
+                        <li>Tháng 6</li>
+                        <li>Tháng 7</li>
+                        <li>Tháng 8</li>
+                        <li>Tháng 9</li>
+                        <li>Tháng 10</li>
+                        <li>Tháng 11</li>
+                        <li>Tháng 12</li>
+                      </ul>
+                    </div>
+                    <div class="calendar__main-right">
+                      <div class="calendar-select">
+                        <div class="calendar-select-title">Từ ngày - đến ngày</div>
+                        <div class="select-header" tabindex="0">
+                          <span class="select-placeholder">dd/mm/yyy</span>
+                          <span class="select-arrow">
+                            <img src="../assets/icons-svg/icon-calendar.svg" alt="icon-arrow-down">
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="calendar__action">
+                    <div class="calendar__action-cancel">Hủy bỏ</div>
+                    <div class="calendar__action-submit">Áp dụng</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="custom-select">
+                <div class="select-header" tabindex="0">
+                  <span class="select-placeholder">Trạng thái</span>
+                  <span class="select-arrow">
+                    <span class="select-arrow">
+                      <img src="../assets/icons-svg/icon-arrow-down.svg" alt="icon-arrow-down">
+                    </span>
+                  </span>
+                </div>
+
+                <ul class="select-options">
+                  <li>Nhập khẩu không nhập kho</li>
+                  <li>Mua hàng - Chuyển khoản</li>
+                </ul>
+              </div>
+
+              <div class="object-select">
+                <div class="select-header" tabindex="0">
+                  <span class="select-placeholder">Đối tượng</span>
+                  <span class="select-arrow">
+                    <span class="select-arrow">
+                      <img src="../assets/icons-svg/icon-arrow-down.svg" alt="icon-arrow-down">
+                    </span>
+                  </span>
+                </div>
+                <div class="objects">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Mã đối tượng</th>
+                        <th>Tên đối tượng</th>
+                        <th>Tên trường 1</th>
+                        <th>Tên trường 2</th>
+                        <th>Tên trường 3</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>CTCP-01</td>
+                        <td>Công ty xây dựng an toàn</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>CTCP-01</td>
+                        <td>Công ty xây dựng an toàn</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>CTCP-01</td>
+                        <td>Công ty xây dựng an toàn</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="main__fillter-action">
+              <div class="main__fillter-cancel">Bỏ lọc</div>
+              <div class="main__fillter-submit">Lọc</div>
+            </div>
           </div>
         </div>
       </div>
