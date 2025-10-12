@@ -158,10 +158,10 @@
                   <img src="../assets/icons-svg/icon-delete.svg" alt="">
                 </div>
 
-                <div (click)="toggleOptions()">
+                <div (click)="toggleOpenClose('isOptionsOpen')">
                   <img src="../assets/icons-svg/icon-more.svg" alt="">
 
-                  <div class="options" *ngIf="isOptionsOpen">
+                  <div class="options" *ngIf="toggles.isOptionsOpen">
                     <ul>
                       <li>Sao chép & Thêm</li>
                       <li>Sao chép & Thêm</li>
@@ -173,10 +173,109 @@
             </div>
           </div>
           <div class="main__search-icons">
-            <div>
-              <img src="../assets/icons-svg/icon-setting.svg" alt="icon-setting">
+            <div class="search-icon" [class.active]="toggles.isSetting">
+              <img src="../assets/icons-svg/icon-setting.svg" alt="icon-setting" (click)="toggleOpenClose('isSetting')">
+              <div class="setting-table" *ngIf="toggles.isSetting">
+                <div class="header-setting">
+                  <div>
+                    <input type="checkbox">
+                    <div>Hiện thị tất cả các cột</div>
+                  </div>
+                  <div>
+                    <input type="checkbox">
+                    <div>Hiện thị tất cả các cột</div>
+                  </div>
+                </div>
+                <div class="main-setting">
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div class="actions-setting">
+                  <div class="default">Mặc định</div>
+                  <div class="cancel">Hủy bỏ</div>
+                  <div class="submit">Áp dụng</div>
+                </div>
+              </div>
             </div>
-            <div [class.active]="isFillter" (click)="toggleFillter()">
+            <div class="search-icon" [class.active]="toggles.isFillter" (click)="toggleOpenClose('isFillter')">
               <img src="../assets/icons/icon-filter.png" alt="icon-filter">
             </div>
           </div>
@@ -311,10 +410,10 @@
               </tbody>
             </table>
           </div>
-          <div class="main__fillter" *ngIf="isFillter">
+          <div class="main__fillter" *ngIf="toggles.isFillter">
             <div class="main__fillter-header">
               <div class="main__fillter-title">Bộ lọc</div>
-              <div class="main__fillter-title" (click)="toggleFillter()">
+              <div class="main__fillter-title" (click)="toggleOpenClose('isFillter')">
                 <img src="../assets/icons-svg/icon-close.svg" alt="">
               </div>
             </div>
@@ -360,13 +459,13 @@
 
               <div class="calendar-select">
                 <div class=" calendar-select-title">Từ ngày - đến ngày</div>
-                <div class="select-header" tabindex="0" (click)="toggleCalendar()">
+                <div class="select-header" tabindex="0" (click)="toggleOpenClose('isCalendar')">
                   <span class=" select-placeholder">dd/mm/yyy</span>
                   <span class="select-arrow">
                     <img src="../assets/icons-svg/icon-calendar.svg" alt="icon-arrow-down">
                   </span>
                 </div>
-                <div class="calendar" *ngIf="isCalendar">
+                <div class="calendar" *ngIf="toggles.isCalendar ">
                   <div class="calendar__main">
                     <div class="calendar__main-left">
                       <ul>

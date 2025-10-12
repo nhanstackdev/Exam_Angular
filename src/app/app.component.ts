@@ -23,8 +23,14 @@ export class AppComponent {
   isSidebarPinned = false;
   isOptionsOpen = false;
   isMobileSidebarOpen = false;
-  isFillter = false;
-  isCalendar = false;
+
+  toggles = {
+    isOptionsOpen: false,
+    isFillter: false,
+    isSetting: false,
+    isCalendar: false
+  };
+
   activeParentIndex: number | null = null;
   activeSubIndex: number | null = null;
 
@@ -133,15 +139,7 @@ export class AppComponent {
     this.isSidebarPinned = !this.isSidebarPinned;
   }
 
-  toggleOptions() {
-    this.isOptionsOpen = !this.isOptionsOpen;
-  }
-
-  toggleFillter() {
-    this.isFillter = !this.isFillter;
-  }
-
-  toggleCalendar() {
-    this.isCalendar = !this.isCalendar;
+  toggleOpenClose(name: keyof typeof this.toggles) {
+    this.toggles[name] = !this.toggles[name];
   }
 }
