@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
 export interface Transaction {
   id: number;
   ngayChungTu: string;
@@ -24,7 +23,9 @@ export interface SidebarItems {
 @Injectable({
   providedIn: 'root'
 })
-export class AppService {
+
+
+export class HomeService {
   private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }

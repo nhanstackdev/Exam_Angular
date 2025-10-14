@@ -7,17 +7,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StickyDirective } from './sticky.directive';
+import { AppRoutingModule } from './app-routing.module';
+import { TestComponent } from './pages/test/test.component';
+import { HomeComponent } from './pages/home/home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    StickyDirective
+    StickyDirective,
+    TestComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     CalendarModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

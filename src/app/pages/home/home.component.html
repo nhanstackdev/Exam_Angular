@@ -1,0 +1,632 @@
+<main>
+  <div class="container" [class.sidebar-pinned]="isSidebarPinned">
+    <nav class="nav">
+      <div class="nav__left">
+        <div class="sidebar__mobile-toggle" (click)="toggleMobileSidebar()">
+          ☰
+        </div>
+
+        <ul class="nav__menu">
+          <li class="nav__menu-item"><a href="#">Hệ thống</a></li>
+          <li class="nav__menu-item"><a href="#">Danh mục</a></li>
+          <li class="nav__menu-item"><a href="#">Tiện ích</a></li>
+          <li class="nav__menu-item"><a href="#">Báo cáo</a></li>
+        </ul>
+
+        <div class="nav__contact">
+          <div class="nav__contact-item">
+            <div class="nav__contact-icon-call">
+              <img src="../assets/icons/icon-call.png" alt="icon-call">
+            </div>
+            <span class="nav__contact-text">1900.57.57.54</span>
+          </div>
+          <div class="nav__contact-item">
+            <div class="nav__contact-icon-zalo">
+              <img src="../assets/icons/icon-zalo.png" alt="icon-zalo">
+            </div>
+            <span class="nav__contact-text">Hỗ trợ khách hàng</span>
+          </div>
+        </div>
+      </div>
+      <div class="nav__right">
+        <div>
+          <div class="nav__right-notification">
+            <img src="../assets/icons/icon-notification.png" alt="logo-notification">
+          </div>
+          <div class="nav__right-text">Công ty TNHH công nghệ và thương mại Softdreams</div>
+        </div>
+        <div class="nav__user">
+          <div class="nav__user-avt">
+            <img src="../assets/images/avt-user.png" alt="avt">
+          </div>
+          <div class="nav__user-name">Admin</div>
+        </div>
+
+        <div class="mobile__menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <div class="mobile__menu-list">
+            <ul>
+              <li>Hệ thống</li>
+              <li>Danh mục</li>
+              <li>Tiện ích</li>
+              <li>Báo cáo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <aside class="sidebar" [class.pinned]="isSidebarPinned" [class.mobile-open]="isMobileSidebarOpen"
+      (mouseenter)="onSidebarHover(true)" (mouseleave)="onSidebarHover(false)">
+
+      <div class="sidebar__logo">
+        <img src="../assets/logo-eb.png" alt="logo">
+        <div class="sidebar__logo-text">Easy Book</div>
+      </div>
+      <button class="sidebar__pin" (click)="toggleSidebarPin($event)">
+        📌
+      </button>
+
+      <button class="sidebar__close" (click)="toggleMobileSidebar()">
+        X
+      </button>
+      <div class="sidebar__item" *ngFor="let item of sidebarItems; let i = index" [class.open]="isItemOpen(i)">
+        <div class="sidebar__item-content" (click)="toggleSubmenu(i)" [class.active-parent]="isParentActive(i)">
+          <div>
+            <div class="sidebar__icon">
+              <img [src]="item.icon" [alt]="item.title" />
+            </div>
+
+            <div class="sidebar__item-title">
+              {{ item.title }}
+            </div>
+          </div>
+
+          <span class="sidebar__submenu-icon" *ngIf="item.subMenu">
+            <svg width="20" height="20" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.4201 8.94995L13.9001 15.47C13.1301 16.24 11.8701 16.24 11.1001 15.47L4.58008 8.94995"
+                stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </div>
+
+        <!-- Submenu -->
+        <div class="sidebar__sub-menu" *ngIf="item.subMenu && isSidebarHovered && (isItemOpen(i) || isParentActive(i))">
+          <ul>
+            <li *ngFor="let sub of item.subMenu; let j = index" (click)="setActiveSubmenu(i, j, $event)"
+              [class.active-sidebar]="isSubActive(i, j)">
+              <p> {{ sub }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <div class="main__header">
+        <h1>Chứng từ bán hàng</h1>
+        <div class="main__actions">
+          <button class="main__actions-add">
+            <img src="../assets/icons/icon-add.png" alt="icon-add">
+            <span class="">Thêm</span>
+          </button>
+          <button class="main__actions-print">
+            <img src="../assets/icons/icon-printer.png" alt="icon-printer">
+            <span class="">in</span>
+            <img src="../assets/icons/icon-arrow-down.png" alt="">
+          </button>
+          <button class="main__actions-more">
+            <img src="../assets/icons/icon-Dot.png" alt="icon-dot">
+          </button>
+        </div>
+      </div>
+
+      <div class="main__content">
+        <div class="main__search">
+          <div class="main__search-bar">
+            <div class="main__search-input">
+              <img src="../assets/icons/icon-search-normal.png" alt="icon-search-normal">
+              <input type="text" placeholder="Tìm kiếm...">
+            </div>
+
+            <div class="main__search-checked">
+              <div class="search__checked-text">Chọn tất cả 1.059 bản ghi </div>
+              <div class="search__checked-cancel">Bỏ chọn</div>
+            </div>
+
+            <div class="main__search-selected">
+              <div class="search__selected-total">
+                <div class="search__selected-text">Đã chọn: </div>
+                <span class="search__selected-quantity">04</span>
+                <div class="search__selected-cancel">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M10.0007 11.1667L5.91732 15.25C5.76454 15.4028 5.5701 15.4792 5.33398 15.4792C5.09787 15.4792 4.90343 15.4028 4.75065 15.25C4.59787 15.0972 4.52148 14.9028 4.52148 14.6667C4.52148 14.4306 4.59787 14.2361 4.75065 14.0833L8.83398 10L4.75065 5.91668C4.59787 5.7639 4.52148 5.56945 4.52148 5.33334C4.52148 5.09723 4.59787 4.90279 4.75065 4.75001C4.90343 4.59723 5.09787 4.52084 5.33398 4.52084C5.5701 4.52084 5.76454 4.59723 5.91732 4.75001L10.0007 8.83334L14.084 4.75001C14.2368 4.59723 14.4312 4.52084 14.6673 4.52084C14.9034 4.52084 15.0979 4.59723 15.2507 4.75001C15.4034 4.90279 15.4798 5.09723 15.4798 5.33334C15.4798 5.56945 15.4034 5.7639 15.2507 5.91668L11.1673 10L15.2507 14.0833C15.4034 14.2361 15.4798 14.4306 15.4798 14.6667C15.4798 14.9028 15.4034 15.0972 15.2507 15.25C15.0979 15.4028 14.9034 15.4792 14.6673 15.4792C14.4312 15.4792 14.2368 15.4028 14.084 15.25L10.0007 11.1667Z"
+                      fill="#545454" />
+                  </svg>
+                </div>
+              </div>
+              <div class="search__selected-actions">
+                <div>
+                  <img src="../assets/icons-svg/icon-edit.svg" alt="">
+                </div>
+
+                <div>
+                  <img src="../assets/icons-svg/icon-delete.svg" alt="">
+                </div>
+
+                <div (click)="toggleOpenClose('isOptionsOpen')">
+                  <img src="../assets/icons-svg/icon-more.svg" alt="">
+
+                  <div class="options" *ngIf="toggles.isOptionsOpen">
+                    <ul>
+                      <li>Sao chép & Thêm</li>
+                      <li>Sao chép & Thêm</li>
+                      <li>Sao chép & Thêm</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main__search-icons">
+            <div class="search-icon" [class.active]="toggles.isSetting">
+              <img src="../assets/icons-svg/icon-setting.svg" alt="icon-setting" (click)="toggleOpenClose('isSetting')">
+              <div class="setting-table" *ngIf="toggles.isSetting">
+                <div class="header-setting">
+                  <div>
+                    <input type="checkbox">
+                    <div>Hiện thị tất cả các cột</div>
+                  </div>
+                  <div>
+                    <input type="checkbox">
+                    <div>Hiện thị tất cả các cột</div>
+                  </div>
+                </div>
+                <div class="main-setting">
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="item-column">
+                    <div>
+                      <input type="checkbox">
+                      <div>Ngày chứng từ</div>
+                    </div>
+                    <div>
+                      <img src="../assets/icons-svg/icon-pin.svg" alt="">
+                      <img src="../assets/icons-svg/icon-dot-grid.svg" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div class="actions-setting">
+                  <div class="default">Mặc định</div>
+                  <div class="cancel">Hủy bỏ</div>
+                  <div class="submit">Áp dụng</div>
+                </div>
+              </div>
+            </div>
+            <div class="search-icon" [class.active]="toggles.isFillter" (click)="toggleOpenClose('isFillter')">
+              <img src="../assets/icons/icon-filter.png" alt="icon-filter">
+            </div>
+          </div>
+        </div>
+
+        <div class="main__table">
+          <div class="main__table-wrraper">
+            <table>
+              <thead>
+                <tr>
+                  <th appSticky="left" [offset]="0" rowspan="2" class="main__table-sticky--left" id="checkbox">
+                    <div><input type="checkbox" name=""></div>
+                  </th>
+                  <th appSticky="left" offset="checkbox" id="stt" rowspan="2">
+                    <div>STT</div>
+                  </th>
+                  <th id="">Ngày chứng từ</th>
+                  <th appSticky="left" offset="doc-date" id="accounting-date">Ngày hạch toán</th>
+                  <th id="doc-number">Số chứng từ</th>
+                  <th id="number-hd">Số HD</th>
+                  <th id="doc-type">Loại chứng từ</th>
+                  <th id="object">Đối tượng</th>
+                  <th id="interpretation">Diễn giải</th>
+                  <th id="money">Tiền hàng 1</th>
+                  <th id="actions" rowspan="2" class="main__table-sticky--right">Thao tác</th>
+                </tr>
+                <tr>
+                  <th>
+                    <div class="fillter-calendar">
+                      <p>Từ ngày - đến ngày</p>
+                      <div>
+                        <img src="../assets/icons/icon-calendar.png" alt="icon-calendar">
+                      </div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="fillter-calendar">
+                      <p>Từ ngày - đến ngày</p>
+                      <div>
+                        <img src="../assets/icons/icon-calendar.png" alt="icon-calendar">
+                      </div>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="fillter-lorem">
+                      <div>
+                        <img src="../assets/icons/icon-lorem.png" alt="icon-lorem" />
+                      </div>
+                      <p>Lorem is</p>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="fillter-lorem">
+                      <div>
+                        <img src="../assets/icons/icon-lorem.png" alt="icon-lorem" />
+                      </div>
+                      <p>Lorem is</p>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="fillter-lorem">
+                      <div>
+                        <img src="../assets/icons/icon-lorem.png" alt="icon-lorem" />
+                      </div>
+                      <p>Lorem is</p>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="fillter-lorem">
+                      <div>
+                        <img src="../assets/icons/icon-lorem.png" alt="icon-lorem" />
+                      </div>
+                      <p>Lorem is</p>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="fillter-lorem">
+                      <div>
+                        <img src="../assets/icons/icon-lorem.png" alt="icon-lorem" />
+                      </div>
+                      <p>Lorem is</p>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="fillter-lorem">
+                      <div>
+                        <img src="../assets/icons/icon-lorem.png" alt="icon-lorem" />
+                      </div>
+                      <p>Lorem is</p>
+                    </div>
+                  </th>
+                </tr>
+                <tr class="total__row">
+                  <th class="total__row-sticky--left"></th>
+                  <th appSticky="left" [bgColor]="'black'" offset="checkbox"></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>1233</th>
+                  <th class="total__row-sticky--right"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let transaction of pagedTransactions">
+                  <td class="tbody-sticky--left">
+                    <div>
+                      <input type="checkbox" class="checkbox">
+                    </div>
+                  </td>
+                  <td appSticky="left" offset="checkbox" class="text-center">{{transaction?.id}}</td>
+                  <td class="text-left">{{ transaction.ngayChungTu }}</td>
+                  <td class="text-left">{{ transaction.ngayHachToan }}</td>
+                  <td class="text-right">{{ transaction.soChungTu }}</td>
+                  <td class="text-right">{{ transaction.soHoaDon }}</td>
+                  <td class="text-left">{{ transaction.dienGiai }}</td>
+                  <td class="text-left" style="max-width: 330px;">{{ transaction.doiTuong }}</td>
+                  <td class="text-left">{{ transaction.loaiChungTu }}</td>
+                  <td class="text-right">{{ transaction.soTien }}</td>
+                  <td class="tbody-sticky--right">
+                    <div class="items-actions">
+                      <div><img src="../assets/icons/icon-message-edit.png" alt="icon-message-edit"></div>
+                      <div><img src="../assets/icons/icon-copy.png" alt="icon-copy"></div>
+                      <div><img src="../assets/icons/icon-dot-column.png" alt="icon-dot-column"></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="main__fillter" *ngIf="toggles.isFillter">
+            <div class="main__fillter-header">
+              <div class="main__fillter-title">Bộ lọc</div>
+              <div class="main__fillter-title" (click)="toggleOpenClose('isFillter')">
+                <img src="../assets/icons-svg/icon-close.svg" alt="">
+              </div>
+            </div>
+            <div class="main__fillter-main">
+              <div class="custom-select">
+                <div class="custom-select-title">Chọn</div>
+                <div class="select-header" tabindex="0">
+                  <span class="select-placeholder">Nhập khẩu kho</span>
+                  <span class="select-arrow">
+                    <span class="select-arrow">
+                      <img src="../assets/icons-svg/icon-arrow-down.svg" alt="icon-arrow-down">
+                    </span>
+                  </span>
+                </div>
+
+                <ul class="select-options">
+                  <li>Trong nước nhập kho</li>
+                  <li>Trang nước không nhập kho</li>
+                  <li class="active">Nhập khẩu nhập kho</li>
+                  <li>Nhập khẩu không nhập kho</li>
+                  <li>Mua hàng - Tiền mặt</li>
+                  <li>Mua hàng - Chuyển khoản</li>
+                </ul>
+              </div>
+
+              <div class="custom-select">
+                <div class="custom-select-title">Chọn</div>
+                <div class="select-header" tabindex="0">
+                  <span class="select-placeholder">VNĐ</span>
+                  <span class="select-arrow">
+                    <img src="../assets/icons-svg/icon-arrow-down.svg" alt="icon-arrow-down">
+                  </span>
+                </div>
+                <ul class="select-options">
+                  <li>Trong nước nhập kho</li>
+                  <li>Trang nước không nhập kho</li>
+                  <li class="active">Nhập khẩu nhập kho</li>
+                  <li>Nhập khẩu không nhập kho</li>
+                  <li>Mua hàng - Tiền mặt</li>
+                  <li>Mua hàng - Chuyển khoản</li>
+                </ul>
+              </div>
+
+              <div class="calendar-select">
+                <div class=" calendar-select-title">Từ ngày - đến ngày</div>
+                <div class="select-header" tabindex="0" (click)="toggleOpenClose('isCalendar')">
+                  <span class=" select-placeholder">dd/mm/yyy</span>
+                  <span class="select-arrow">
+                    <img src="../assets/icons-svg/icon-calendar.svg" alt="icon-arrow-down">
+                  </span>
+                </div>
+                <div class="calendar" *ngIf="toggles.isCalendar ">
+                  <div class="calendar__main">
+                    <div class="calendar__main-left">
+                      <ul>
+                        <li class="active">Hôm nay</li>
+                        <li>Hôm qua</li>
+                        <li>Tháng 1</li>
+                        <li>Tháng 2</li>
+                        <li>Tháng 3</li>
+                        <li>Tháng 4</li>
+                        <li>Tháng 5</li>
+                        <li>Tháng 6</li>
+                        <li>Tháng 7</li>
+                        <li>Tháng 8</li>
+                        <li>Tháng 9</li>
+                        <li>Tháng 10</li>
+                        <li>Tháng 11</li>
+                        <li>Tháng 12</li>
+                      </ul>
+                    </div>
+                    <div class="calendar__main-right">
+                      <div class="calendar-select">
+                        <div class="calendar-select-title">Từ ngày - đến ngày</div>
+                        <div class="select-header" tabindex="0">
+                          <span class="select-placeholder">{{ rangeDates?.length
+                            ? (rangeDates[0] | date:'dd/MM/yyyy') + ' - ' + (rangeDates[1] | date:'dd/MM/yyyy')
+                            : 'dd/MM/yyyy' }}</span>
+                          <span class="select-arrow">
+                            <img src="../assets/icons-svg/icon-calendar.svg" alt="icon-arrow-down">
+                          </span>
+                        </div>
+                      </div>
+                      <div>
+                        <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true"
+                          [showIcon]="true" [numberOfMonths]="2" [inline]="true" dateFormat="dd/mm/yy">
+                        </p-calendar>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="calendar__action">
+                    <div class="calendar__action-cancel">Hủy bỏ</div>
+                    <div class="calendar__action-submit">Áp dụng</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="custom-select">
+                <div class="select-header" tabindex="0">
+                  <span class="select-placeholder">Trạng thái</span>
+                  <span class="select-arrow">
+                    <span class="select-arrow">
+                      <img src="../assets/icons-svg/icon-arrow-down.svg" alt="icon-arrow-down">
+                    </span>
+                  </span>
+                </div>
+
+                <ul class="select-options">
+                  <li>Nhập khẩu không nhập kho</li>
+                  <li>Mua hàng - Chuyển khoản</li>
+                </ul>
+              </div>
+
+              <div class="object-select">
+                <div class="select-header" tabindex="0">
+                  <span class="select-placeholder">Đối tượng</span>
+                  <span class="select-arrow">
+                    <span class="select-arrow">
+                      <img src="../assets/icons-svg/icon-arrow-down.svg" alt="icon-arrow-down">
+                    </span>
+                  </span>
+                </div>
+                <div class="objects">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Mã đối tượng</th>
+                        <th>Tên đối tượng</th>
+                        <th>Tên trường 1</th>
+                        <th>Tên trường 2</th>
+                        <th>Tên trường 3</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>CTCP-01</td>
+                        <td>Công ty xây dựng an toàn</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>CTCP-01</td>
+                        <td>Công ty xây dựng an toàn</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <td>CTCP-01</td>
+                        <td>Công ty xây dựng an toàn</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="main__fillter-action">
+              <div class="main__fillter-cancel">Bỏ lọc</div>
+              <div class="main__fillter-submit">Lọc</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main__table-pagination">
+        <div class="main__table-pagination-info">
+          <div>Tổng số: <span>18</span> bản ghi</div>
+          <div class="option">
+            <div><span style="font-weight:600; color: #050B12;">18</span> bản ghi/trang</div>
+            <img src="../assets/icons/icon-arrow-down-bl.png" alt="icon-arrow-down-bl">
+
+            <ul>
+              <li>option 1</li>
+              <li>option 2</li>
+              <li>option 3</li>
+              <li>option 4</li>
+            </ul>
+          </div>
+        </div>
+        <div class="main__table-pagination-controls">
+          <button class="page-btn" (click)="prevPage()" [disabled]="currentPage === 1">
+            <img src="../assets/icons/icon-arrow-left.png" alt="icon-arrow-left">
+          </button>
+          <!-- <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">4</button>
+          <span class="ellipsis">
+            <img src="../assets/icons/icon-dot-bl.png" alt="icon-Dot">
+          </span>
+          <button class="page-btn">12</button> -->
+          <ng-container *ngFor="let page of visiblePages">
+            <ng-container *ngIf="page !== 0; else dots">
+              <button class="page-btn" [class.active]="currentPage === page" (click)="goToPage(page)">
+                {{ page }}
+              </button>
+            </ng-container>
+
+            <!-- dấu ... -->
+            <ng-template #dots>
+              <span class="ellipsis">
+                <img src="../assets/icons/icon-dot-bl.png" alt="icon-dot" />
+              </span>
+            </ng-template>
+          </ng-container>
+          <button class="page-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
+            <img src="../assets/icons/icon-arrow-right.png" alt="icon-arrow-right">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
