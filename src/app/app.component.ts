@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { AppService, SidebarItems, Transaction } from './app.service';
 import { Calendar } from 'primeng/calendar';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { Calendar } from 'primeng/calendar';
 export class AppComponent {
   title = 'Asm';
 
+  rangeDates: Date[] = [];
   transactions: Transaction[] = [];
   sidebarItems: SidebarItems[] = [];
   pagedTransactions: Transaction[] = [];
@@ -34,7 +36,10 @@ export class AppComponent {
   activeParentIndex: number | null = null;
   activeSubIndex: number | null = null;
 
-  constructor(private transactionService: AppService) { }
+  constructor(
+    private transactionService: AppService,
+    private primengConfig: PrimeNGConfig
+  ) { }
 
   ngOnInit(): void {
     this.transactionService.getAll().subscribe(data => {
@@ -45,6 +50,13 @@ export class AppComponent {
     });
     this.transactionService.getMenu().subscribe(data => {
       this.sidebarItems = data;
+    })
+
+    this.primengConfig.setTranslation({
+      monthNames: [
+        "Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6",
+        "Tháng 7","Tháng 8","Tháng 9","Tháng 10","Tháng 11","Tháng 12"
+      ],
     })
   }
 

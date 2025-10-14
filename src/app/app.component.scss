@@ -1,8 +1,9 @@
+@import "./styles/calender.component.css";
+
+
 $text-primary: #000000;
 $bg-color-gray: #E6E6E6;
 $bg-orange: #FF5500;
-
-@import './styles/sidebar.component.scss';
 
 @function rem($px) {
     @return #{$px / 16}rem;
@@ -856,7 +857,7 @@ main {
                                     min-width: rem(44);
                                     padding: 0;
                                     position: sticky;
-                                    left: 0;
+                                    left: rem(44);
                                 }
 
                                 &#doc-date {
@@ -1349,6 +1350,7 @@ main {
 
                         &__main {
                             display: flex;
+                            justify-content: space-between;
                             gap: rem(18);
 
                             &-left {
@@ -1392,6 +1394,8 @@ main {
                             }
 
                             &-right {
+                                flex: 1;
+
                                 .calendar-select {
                                     position: relative;
                                     margin-top: rem(16);
@@ -1457,6 +1461,7 @@ main {
                             gap: rem(12);
 
                             &-cancel {
+                                cursor: pointer;
                                 color: #FF5500;
                                 font-size: rem(14);
                                 border-radius: rem(8);
@@ -1465,6 +1470,7 @@ main {
                             }
 
                             &-submit {
+                                cursor: pointer;
                                 border-radius: rem(8);
                                 font-size: rem(14);
                                 background-color: #FF5500;
@@ -1781,12 +1787,14 @@ main {
                 align-items: center;
                 margin-left: 0;
                 gap: rem(12);
+
                 div {
                     width: 100%;
                 }
 
                 .main__search-checked {
                     margin-left: 0;
+
                     .search__checked-cancel {
                         text-align: center;
                     }

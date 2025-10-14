@@ -294,5 +294,12 @@
         "Tổng hợp"
       ]
     }
+  ],
+  "column": [
+    {
+      "id": 1,
+      "nameId": "stt",
+      "fixed": "left"
+    }
   ]
 }
