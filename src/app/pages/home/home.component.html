@@ -283,17 +283,17 @@
 
         <div class="main__table">
           <div class="main__table-wrraper">
-            <table>
+            <table [appStickyCols]="['checkbox', 'stt', 'accounting-date']">
               <thead>
                 <tr>
-                  <th appSticky="left" [offset]="0" rowspan="2" class="main__table-sticky--left" id="checkbox">
+                  <th name="checkbox" rowspan="2" class="main__table-sticky--left" id="checkbox">
                     <div><input type="checkbox" name=""></div>
                   </th>
-                  <th appSticky="left" offset="checkbox" id="stt" rowspan="2">
+                  <th name="stt" id="stt" rowspan="2">
                     <div>STT</div>
                   </th>
                   <th id="">Ngày chứng từ</th>
-                  <th appSticky="left" offset="doc-date" id="accounting-date">Ngày hạch toán</th>
+                  <th name="accounting-date" id="accounting-date">Ngày hạch toán</th>
                   <th id="doc-number">Số chứng từ</th>
                   <th id="number-hd">Số HD</th>
                   <th id="doc-type">Loại chứng từ</th>
@@ -311,7 +311,7 @@
                       </div>
                     </div>
                   </th>
-                  <th>
+                  <th name="accounting-date">
                     <div class="fillter-calendar">
                       <p>Từ ngày - đến ngày</p>
                       <div>
@@ -369,10 +369,10 @@
                   </th>
                 </tr>
                 <tr class="total__row">
-                  <th class="total__row-sticky--left"></th>
-                  <th appSticky="left" [bgColor]="'black'" offset="checkbox"></th>
+                  <th name="checkbox" class="total__row-sticky--left"></th>
+                  <th name="stt"></th>
                   <th></th>
-                  <th></th>
+                  <th name="accounting-date"></th>
                   <th></th>
                   <th></th>
                   <th></th>
@@ -384,14 +384,14 @@
               </thead>
               <tbody>
                 <tr *ngFor="let transaction of pagedTransactions">
-                  <td class="tbody-sticky--left">
+                  <td [attr.name]="'checkbox'">
                     <div>
                       <input type="checkbox" class="checkbox">
                     </div>
                   </td>
-                  <td appSticky="left" offset="checkbox" class="text-center">{{transaction?.id}}</td>
+                  <td [attr.name]="'stt'">{{transaction?.id}}</td>
                   <td class="text-left">{{ transaction.ngayChungTu }}</td>
-                  <td class="text-left">{{ transaction.ngayHachToan }}</td>
+                  <td [attr.name]="'accounting-date'" class="text-left">{{ transaction.ngayHachToan }}</td>
                   <td class="text-right">{{ transaction.soChungTu }}</td>
                   <td class="text-right">{{ transaction.soHoaDon }}</td>
                   <td class="text-left">{{ transaction.dienGiai }}</td>

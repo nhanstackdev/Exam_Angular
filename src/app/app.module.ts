@@ -10,13 +10,15 @@ import { StickyDirective } from './sticky.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { TestComponent } from './pages/test/test.component';
 import { HomeComponent } from './pages/home/home.component';
+import { StickyColsDirective } from './directives/sticky-cols.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     StickyDirective,
     TestComponent,
-    HomeComponent
+    HomeComponent,
+    StickyColsDirective
   ],
   imports: [
     BrowserModule,

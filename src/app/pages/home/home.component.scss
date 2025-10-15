@@ -4,6 +4,21 @@ $text-primary: #000000;
 $bg-color-gray: #E6E6E6;
 $bg-orange: #FF5500;
 
+th[name],
+td[name] {
+  background: #fff;
+  position: sticky;
+  z-index: 2;
+}
+
+thead th[name] {
+  z-index: 3;
+}
+
+tbody td[name] {
+  z-index: 1;
+}
+
 @function rem($px) {
     @return #{$px / 16}rem;
 }
