@@ -6,17 +6,17 @@ $bg-orange: #FF5500;
 
 th[name],
 td[name] {
-  background: #fff;
-  position: sticky;
-  z-index: 2;
+    background: #fff;
+    position: sticky;
+    z-index: 2;
 }
 
 thead th[name] {
-  z-index: 3;
+    z-index: 3;
 }
 
 tbody td[name] {
-  z-index: 1;
+    z-index: 1;
 }
 
 @function rem($px) {
@@ -1332,9 +1332,9 @@ main {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
-                        cursor: pointer;
                         background-color: #fff;
                         color: #333;
+                        width: 100%;
 
                         &:focus {
                             outline: none;
@@ -1345,8 +1345,12 @@ main {
                         font-size: rem(14);
                         line-height: 1;
                         color: #ff7a00;
-                        transform: rotate(0deg);
-                        transition: transform 0.25s ease;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%) !important;
+                        right: 0;
+                        margin-right: rem(8);
+                        cursor: pointer;
                     }
 
                     .calendar {

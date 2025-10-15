@@ -457,13 +457,12 @@
               </div>
 
               <div class="calendar-select">
-                <div class=" calendar-select-title">Từ ngày - đến ngày</div>
-                <div class="select-header" tabindex="0" (click)="toggleOpenClose('isCalendar')">
-                  <span class=" select-placeholder">dd/mm/yyy</span>
-                  <span class="select-arrow">
-                    <img src="../assets/icons-svg/icon-calendar.svg" alt="icon-arrow-down">
-                  </span>
-                </div>
+                <div class="calendar-select-title">Từ ngày - đến ngày</div>
+                <input type="text" class="select-header" placeholder="dd/mm/yyyy-dd/mm/yyyy" [(ngModel)]="displayRange"
+                  (input)="autoFormatRange($event)">
+                <span class="select-arrow" (click)="toggleOpenClose('isCalendar')">
+                  <img src="../assets/icons-svg/icon-calendar.svg" alt="icon-arrow-down">
+                </span>
                 <div class="calendar" *ngIf="toggles.isCalendar ">
                   <div class="calendar__main">
                     <div class="calendar__main-left">
@@ -487,18 +486,16 @@
                     <div class="calendar__main-right">
                       <div class="calendar-select">
                         <div class="calendar-select-title">Từ ngày - đến ngày</div>
-                        <div class="select-header" tabindex="0">
-                          <span class="select-placeholder">{{ rangeDates?.length
-                            ? (rangeDates[0] | date:'dd/MM/yyyy') + ' - ' + (rangeDates[1] | date:'dd/MM/yyyy')
-                            : 'dd/MM/yyyy' }}</span>
-                          <span class="select-arrow">
-                            <img src="../assets/icons-svg/icon-calendar.svg" alt="icon-arrow-down">
-                          </span>
-                        </div>
+                        <input type="text" class="select-header" placeholder="dd/mm/yyyy-dd/mm/yyyy" [(ngModel)]="displayRange"
+                          (input)="autoFormatRange($event)">
+                        <span class="select-arrow">
+                          <img src="../assets/icons-svg/icon-calendar.svg" alt="icon-arrow-down">
+                        </span>
                       </div>
                       <div>
-                        <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true"
-                          [showIcon]="true" [numberOfMonths]="2" [inline]="true" dateFormat="dd/mm/yy">
+                        <p-calendar [(ngModel)]="dateRange" selectionMode="range" [readonlyInput]="true"
+                          [showIcon]="true" [numberOfMonths]="2" [inline]="true" dateFormat="dd/mm/yy"
+                          (ngModelChange)="onCalendarChange($event)">
                         </p-calendar>
                       </div>
                     </div>

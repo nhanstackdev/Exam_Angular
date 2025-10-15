@@ -11,6 +11,8 @@ import { SidebarItems, Transaction } from './home.service';
 export class HomeComponent implements OnInit {
   title = 'Asm';
 
+  displayRange: string = '';
+  dateRange: Date[] | null = null;
   rangeDates: Date[] = [];
   transactions: Transaction[] = [];
   sidebarItems: SidebarItems[] = [];
@@ -151,6 +153,59 @@ export class HomeComponent implements OnInit {
     this.isSidebarPinned = !this.isSidebarPinned;
   }
 
+  // format calendar
+  autoFormatRange(event: any) {
+    let value: string = event.target.value.replace(/\D/g, '');
+    let formatted = '';
+
+    // format ngày đầu
+    if (value.length > 0) formatted = value.substring(0, 2);
+    if (value.length > 2) formatted += '/' + value.substring(2, 4);
+    if (value.length > 4) formatted += '/' + value.substring(4, 8);
+
+    // format ngày thứ 2
+    if (value.length > 8) formatted += ' - ' + value.substring(8, 10);
+    if (value.length > 10) formatted += '/' + value.substring(10, 12);
+    if (value.length > 12) formatted += '/' + value.substring(12, 16);
+
+    event.target.value = formatted;
+    this.displayRange = formatted;
+
+    // Khi nhập đủ 16 ký tự → tạo 2 Date object
+    if (value.length === 16) {
+      const start = this.parseDate(value.substring(0, 8));
+      const end = this.parseDate(value.substring(8, 16));
+
+      if (start && end) {
+        this.dateRange = [start, end];
+      }
+    }
+  }
+
+  onCalendarChange(range: (Date | null)[]) {
+    if (range && range.length === 2 && range[0] && range[1]) {
+      const d1 = this.formatDate(range[0]);
+      const d2 = this.formatDate(range[1]);
+      this.displayRange = `${d1} - ${d2}`;
+    }
+  }
+
+  private parseDate(value: string): Date | null {
+    const day = parseInt(value.substring(0, 2));
+    const month = parseInt(value.substring(2, 4)) - 1;
+    const year = parseInt(value.substring(4, 8));
+    const date = new Date(year, month, day);
+    return isNaN(date.getTime()) ? null : date;
+  }
+
+  private formatDate(date: Date): string {
+    const dd = ('0' + date.getDate()).slice(-2);
+    const mm = ('0' + (date.getMonth() + 1)).slice(-2);
+    const yyyy = date.getFullYear();
+    return `${dd}/${mm}/${yyyy}`;
+  }
+
+  // open and close
   toggleOpenClose(name: keyof typeof this.toggles) {
     this.toggles[name] = !this.toggles[name];
   }
