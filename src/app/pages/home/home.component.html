@@ -467,27 +467,20 @@
                   <div class="calendar__main">
                     <div class="calendar__main-left">
                       <ul>
-                        <li class="active">Hôm nay</li>
-                        <li>Hôm qua</li>
-                        <li>Tháng 1</li>
-                        <li>Tháng 2</li>
-                        <li>Tháng 3</li>
-                        <li>Tháng 4</li>
-                        <li>Tháng 5</li>
-                        <li>Tháng 6</li>
-                        <li>Tháng 7</li>
-                        <li>Tháng 8</li>
-                        <li>Tháng 9</li>
-                        <li>Tháng 10</li>
-                        <li>Tháng 11</li>
-                        <li>Tháng 12</li>
+                        <li 
+                          *ngFor="let opt of selectOptions" 
+                          [class.active]="selectedOption ===  opt.value"
+                          (click)="onSelect(opt)"
+                        > 
+                          {{ opt.label }}
+                        </li>
                       </ul>
                     </div>
                     <div class="calendar__main-right">
                       <div class="calendar-select">
                         <div class="calendar-select-title">Từ ngày - đến ngày</div>
-                        <input type="text" class="select-header" placeholder="dd/mm/yyyy-dd/mm/yyyy" [(ngModel)]="displayRange"
-                          (input)="autoFormatRange($event)">
+                        <input type="text" class="select-header" placeholder="dd/mm/yyyy-dd/mm/yyyy"
+                          [(ngModel)]="displayRange" (input)="autoFormatRange($event)">
                         <span class="select-arrow">
                           <img src="../assets/icons-svg/icon-calendar.svg" alt="icon-arrow-down">
                         </span>

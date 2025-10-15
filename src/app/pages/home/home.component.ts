@@ -18,6 +18,24 @@ export class HomeComponent implements OnInit {
   sidebarItems: SidebarItems[] = [];
   pagedTransactions: Transaction[] = [];
 
+  selectedOption: any = null;
+  selectOptions = [
+    { label: 'Hôm nay', value: 'today' },
+    { label: 'Ngày mai', value: 'tomorrow' },
+    { label: 'Tháng 1', value: 1 },
+    { label: 'Tháng 2', value: 2 },
+    { label: 'Tháng 3', value: 3 },
+    { label: 'Tháng 4', value: 4 },
+    { label: 'Tháng 5', value: 5 },
+    { label: 'Tháng 6', value: 6 },
+    { label: 'Tháng 7', value: 7 },
+    { label: 'Tháng 8', value: 8 },
+    { label: 'Tháng 9', value: 9 },
+    { label: 'Tháng 10', value: 10 },
+    { label: 'Tháng 11', value: 11 },
+    { label: 'Tháng 12', value: 12 },
+  ];
+
   currentPage: number = 1;
   pageSize: number = 15;
   totalPages: number = 0;
@@ -190,6 +208,35 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  selectToday() {
+    const today = new Date();
+    this.selectedOption = 'today';
+    this.dateRange = [today, today];
+  }
+
+  onSelect(opt: any) {
+    this.selectedOption = opt.value;
+    const today = new Date();
+
+    if (opt.value === 'today') {
+      this.dateRange = [today, today];
+    }
+    else if (opt.value === 'tomorrow') {
+      const tomorrow = new Date();
+      tomorrow.setDate(today.getDate() + 1);
+      this.dateRange = [tomorrow, tomorrow];
+    }
+    else if (typeof opt.value === 'number') {
+      const year = today.getFullYear();
+      const start = new Date(year, opt.value - 1, 1);
+      const end = new Date(year, opt.value, 0);
+      const d1 = this.formatDate(start);
+      const d2 = this.formatDate(end);
+      this.displayRange = `${d1} - ${d2}`;
+      this.dateRange = [start, end];
+    }
+  }
+
   private parseDate(value: string): Date | null {
     const day = parseInt(value.substring(0, 2));
     const month = parseInt(value.substring(2, 4)) - 1;
@@ -208,6 +255,8 @@ export class HomeComponent implements OnInit {
   // open and close
   toggleOpenClose(name: keyof typeof this.toggles) {
     this.toggles[name] = !this.toggles[name];
+    if(name === "isCalendar") {
+      this.selectToday()
+    }
   }
-
 }

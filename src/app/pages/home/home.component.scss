@@ -1402,6 +1402,7 @@ main {
                                         padding: rem(8) rem(16);
                                         list-style: none;
                                         border-radius: rem(5);
+                                        cursor: pointer;
 
                                         &.active {
                                             background-color: #FFEEE6;
