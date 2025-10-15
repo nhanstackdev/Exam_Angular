@@ -211,6 +211,9 @@ export class HomeComponent implements OnInit {
   selectToday() {
     const today = new Date();
     this.selectedOption = 'today';
+    const d1 = this.formatDate(today);
+    const d2 = this.formatDate(today);
+    this.displayRange = `${d1} - ${d2}`;
     this.dateRange = [today, today];
   }
 
@@ -219,11 +222,18 @@ export class HomeComponent implements OnInit {
     const today = new Date();
 
     if (opt.value === 'today') {
+      const d1 = this.formatDate(today);
+      const d2 = this.formatDate(today);
+      this.displayRange = `${d1} - ${d2}`;
       this.dateRange = [today, today];
+      
     }
     else if (opt.value === 'tomorrow') {
       const tomorrow = new Date();
       tomorrow.setDate(today.getDate() + 1);
+      const d1 = this.formatDate(tomorrow);
+      const d2 = this.formatDate(tomorrow);
+      this.displayRange = `${d1} - ${d2}`;
       this.dateRange = [tomorrow, tomorrow];
     }
     else if (typeof opt.value === 'number') {
@@ -255,7 +265,7 @@ export class HomeComponent implements OnInit {
   // open and close
   toggleOpenClose(name: keyof typeof this.toggles) {
     this.toggles[name] = !this.toggles[name];
-    if(name === "isCalendar") {
+    if (name === "isCalendar") {
       this.selectToday()
     }
   }
