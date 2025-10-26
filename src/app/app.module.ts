@@ -11,24 +11,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { TestComponent } from './pages/test/test.component';
 import { HomeComponent } from './pages/home/home.component';
 import { StickyColsDirective } from './directives/sticky-cols.directive';
-
+import { TableComponent } from './pages/table/table.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
     StickyDirective,
     TestComponent,
     HomeComponent,
-    StickyColsDirective
+    StickyColsDirective,
+    TableComponent
   ],
   imports: [
+    FontAwesomeModule,
     BrowserModule,
     HttpClientModule,
     CalendarModule,
     FormsModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
