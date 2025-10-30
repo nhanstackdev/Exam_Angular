@@ -54,8 +54,9 @@ tbody td[name] {
   position: sticky;
   top: 0;
   right: 0;
-  z-index: 20;
+  z-index: 3;
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.5);
+  background-color: white;
 }
 
 .sticky--left {
@@ -63,6 +64,7 @@ tbody td[name] {
   top: 0;
   left: 0;
   z-index: 20;
+  background-color: white;
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -452,7 +454,7 @@ main {
   }
 }
 
-.sidebar.pinned + .main {
+.sidebar.pinned+.main {
   margin-left: rem(240);
 }
 
@@ -826,129 +828,199 @@ main {
     //  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
     //}
 
-    &-wrraper {
-      width: 100%;
-      overflow-x: auto;
-      max-height: rem(760);
-      overflow-y: auto;
-      position: relative;
-      -webkit-overflow-scrolling: touch;
-
-      &::-webkit-scrollbar {
-        height: 8px;
-        width: 8px;
-      }
-
-      &::-webkit-scrollbar-track {
-        background: white;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: $bg-orange;
-        border-radius: 4px;
-      }
-
-      table {
+      &-wrraper {
         width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
+        overflow-x: auto;
+        max-height: rem(760);
+        overflow-y: auto;
+        position: relative;
+        -webkit-overflow-scrolling: touch;
 
-        max-width: 100%;
-        min-width: 1200px;
-        font-size: 14px;
+        &::-webkit-scrollbar {
+          height: 8px;
+          width: 8px;
+        }
 
-        thead {
+        &::-webkit-scrollbar-track {
+          background: white;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: $bg-orange;
+          border-radius: 4px;
+        }
+
+        table {
           width: 100%;
-          tr {
-            th {
-              background-color: #E6E6E6;
-              font-weight: 600;
-              padding: 10px 16px;
-            }
-          }
-          tr:first-child {
-            th {
-              text-align: center;
-              border: 0.5px solid #B0B0B0;
+          border-collapse: separate;
+          border-spacing: 0;
 
-              div {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                gap: 8px;
+          max-width: 100%;
+          min-width: 1200px;
+          font-size: 14px;
 
-                span {
-                  text-wrap: nowrap;
-                }
+          thead {
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+
+            tr {
+              th {
+                background-color: #E6E6E6;
+                font-weight: 600;
+                padding: 10px 16px;
               }
             }
 
-            th[name="checkbox"] {
-              min-width: 44px;
+            tr:first-child {
+              th {
+                text-align: center;
+                border: 0.5px solid #B0B0B0;
+
+                div {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  gap: 8px;
+
+                  span {
+                    text-wrap: nowrap;
+                  }
+                }
+              }
+
+              th[name="checkbox"] {
+                min-width: 44px;
+              }
+
+              th[name="stt"] {
+                min-width: 44px;
+
+              }
+
+              th[name="ngay-chung-tu"] {
+                min-width: 165px;
+              }
+
+              th[name="ngay-hach-toan"] {
+                min-width: 172px;
+              }
+
+              th[name="so-chung-tu"] {
+                min-width: 155px;
+              }
+
+              th[name="header"] {
+                min-width: 155px;
+              }
+
+              th[name="loai-chung-tu"] {
+                min-width: 170px;
+              }
+
+              th[name="doi-tuong"] {
+                min-width: 330px;
+              }
+
+              th[name="dien-giai"] {
+                min-width: 159px;
+              }
+
+              th[name="tong-tien-hang"] {
+                min-width: 180px;
+              }
+
+              th[name="tong-tien-hang-2"] {
+                min-width: 180px;
+              }
+
+              th[name="thao-tac"] {
+                min-width: 151px;
+              }
             }
 
-            th[name="stt"] {
-              min-width: 44px;
-
-            }
-
-            th[name="ngay-chung-tu"] {
-              min-width: 165px;
-            }
-
-            th[name="ngay-hach-toan"] {
-              min-width: 172px;
-            }
-
-            th[name="so-chung-tu"] {
-              min-width: 155px;
-            }
-
-            th[name="header"] {
-              min-width: 155px;
-            }
-
-            th[name="loai-chung-tu"] {
-              min-width: 170px;
-            }
-
-            th[name="doi-tuong"] {
-              min-width: 330px;
-            }
-
-            th[name="dien-giai"] {
-              min-width: 159px;
-            }
-
-            th[name="tong-tien-hang"] {
-              min-width: 180px;
-            }
-
-            th[name="tong-tien-hang-2"] {
-              min-width: 180px;
-            }
-
-            th[name="thao-tac"] {
-              position: sticky;
-              top: 0;
-              right: 0;
-              z-index: 20;
-              box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
-              min-width: 151px;
+            tr:last-child {
+              th {
+                background-color: #B0B0B0;
+                font-weight: 600;
+                padding: 10px 16px;
+                text-align: end;
+                max-height: 40px;
+              }
             }
           }
-          tr:last-child {
-            th {
-              background-color: #B0B0B0;
-              font-weight: 600;
-              padding: 10px 16px;
-              text-align: end;
-              max-height: 40px;
+
+          tbody {
+            tr {
+              max-height: rem(40);
+
+              td {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                &.tbody-sticky--left {
+                  position: sticky;
+                  top: 0;
+                  left: 0;
+                  background-color: #f7fafc;
+                  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+                }
+
+                &.tbody-sticky--right {
+                  position: sticky;
+                  top: 0;
+                  right: 0;
+                  background-color: #f7fafc;
+                  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+                }
+
+                &:first-child {
+                  padding: 0 !important;
+
+                  div {
+                    @include flex-center;
+                  }
+                }
+
+                border: rem(1) solid #B0B0B0;
+                font-size: rem(14);
+                line-height: 1;
+                padding: rem(10) rem(16);
+
+                &.text-left {
+                  text-align: left;
+                }
+
+                &.text-center {
+                  text-align: center;
+                }
+
+                &.text-right {
+                  text-align: right;
+                }
+
+                div {
+                  &.items-actions {
+                    @include flex-center;
+                    gap: rem(10);
+
+                    div {
+                      cursor: pointer;
+
+                      img {
+                        width: rem(24);
+                        height: rem(24);
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
       }
-    }
 
     &-pagination {
       @include flex-between;
@@ -964,7 +1036,7 @@ main {
         align-items: center;
         gap: rem(24);
 
-        > div:first-child {
+        >div:first-child {
           span {
             font-weight: 600;
             color: #050B12;

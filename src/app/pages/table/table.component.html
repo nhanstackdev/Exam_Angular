@@ -37,14 +37,14 @@
         <div class="mobile__menu">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"/>
+              d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </div>
       </div>
     </nav>
 
     <aside class="sidebar" [class.pinned]="isSidebarPinned" [class.mobile-open]="isMobileSidebarOpen"
-           (mouseenter)="onSidebarHover(true)" (mouseleave)="onSidebarHover(false)">
+      (mouseenter)="onSidebarHover(true)" (mouseleave)="onSidebarHover(false)">
 
       <div class="sidebar__logo">
         <img src="../assets/logo-eb.png" alt="logo">
@@ -61,7 +61,7 @@
         <div class="sidebar__item-content" (click)="toggleSubmenu(i)" [class.active-parent]="isParentActive(i)">
           <div>
             <div class="sidebar__icon">
-              <img [src]="item.icon" [alt]="item.title"/>
+              <img [src]="item.icon" [alt]="item.title" />
             </div>
 
             <div class="sidebar__item-title">
@@ -72,7 +72,7 @@
           <span class="sidebar__submenu-icon" *ngIf="item.subMenu">
             <svg width="20" height="20" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M20.4201 8.94995L13.9001 15.47C13.1301 16.24 11.8701 16.24 11.1001 15.47L4.58008 8.94995"
-                    stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </span>
         </div>
@@ -81,7 +81,7 @@
         <div class="sidebar__sub-menu" *ngIf="item.subMenu && isSidebarHovered && (isItemOpen(i) || isParentActive(i))">
           <ul>
             <li *ngFor="let sub of item.subMenu; let j = index" (click)="setActiveSubmenu(i, j, $event)"
-                [class.active-sidebar]="isSubActive(i, j)">
+              [class.active-sidebar]="isSubActive(i, j)">
               <p> {{ sub }}</p>
             </li>
           </ul>
@@ -129,7 +129,7 @@
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M10.0007 11.1667L5.91732 15.25C5.76454 15.4028 5.5701 15.4792 5.33398 15.4792C5.09787 15.4792 4.90343 15.4028 4.75065 15.25C4.59787 15.0972 4.52148 14.9028 4.52148 14.6667C4.52148 14.4306 4.59787 14.2361 4.75065 14.0833L8.83398 10L4.75065 5.91668C4.59787 5.7639 4.52148 5.56945 4.52148 5.33334C4.52148 5.09723 4.59787 4.90279 4.75065 4.75001C4.90343 4.59723 5.09787 4.52084 5.33398 4.52084C5.5701 4.52084 5.76454 4.59723 5.91732 4.75001L10.0007 8.83334L14.084 4.75001C14.2368 4.59723 14.4312 4.52084 14.6673 4.52084C14.9034 4.52084 15.0979 4.59723 15.2507 4.75001C15.4034 4.90279 15.4798 5.09723 15.4798 5.33334C15.4798 5.56945 15.4034 5.7639 15.2507 5.91668L11.1673 10L15.2507 14.0833C15.4034 14.2361 15.4798 14.4306 15.4798 14.6667C15.4798 14.9028 15.4034 15.0972 15.2507 15.25C15.0979 15.4028 14.9034 15.4792 14.6673 15.4792C14.4312 15.4792 14.2368 15.4028 14.084 15.25L10.0007 11.1667Z"
-                      fill="#545454"/>
+                      fill="#545454" />
                   </svg>
                 </div>
               </div>
@@ -267,386 +267,282 @@
 
         <div class="main__table">
           <div class="main__table-wrraper">
-            <table [appStickyCols]="['checkbox', 'stt', 'tong']">
+            <table [appStickyCols]="['checkbox', 'stt', 'ngay-hach-toan']">
               <thead>
-              <tr>
-                <th name="checkbox">
-                  <input type="checkbox">
-                </th>
-                <th name="stt">
+                <tr>
+                  <th name="checkbox">
+                    <div>
+                      <input type="checkbox">
+                    </div>
+                  </th>
+                  <th name="stt">
                     <span>STT</span>
-                </th>
-                <th name="ngay-chung-tu">
-                  <div>
-                    <span>Ngày chứng từ</span>
+                  </th>
+                  <th name="ngay-chung-tu">
                     <div>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.66675 3.66666V6.16666" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M15.3333 3.66666V6.16666" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4.91675 9.57501H19.0834" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                        <path
-                          d="M19.5 9.08332V16.1667C19.5 18.6667 18.25 20.3333 15.3333 20.3333H8.66667C5.75 20.3333 4.5 18.6667 4.5 16.1667V9.08332C4.5 6.58332 5.75 4.91666 8.66667 4.91666H15.3333C18.25 4.91666 19.5 6.58332 19.5 9.08332Z"
-                          stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                        <path d="M11.9963 13.4167H12.0038" stroke="#545454" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        <path d="M8.91185 13.4167H8.91933" stroke="#545454" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        <path d="M8.91185 15.9167H8.91933" stroke="#545454" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </th>
-                <th name="ngay-hach-toan">
-                  <div>
-                    <span>Ngày hạch toán</span>
-                    <div>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.66675 3.66666V6.16666" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M15.3333 3.66666V6.16666" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4.91675 9.57501H19.0834" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                        <path
-                          d="M19.5 9.08332V16.1667C19.5 18.6667 18.25 20.3333 15.3333 20.3333H8.66667C5.75 20.3333 4.5 18.6667 4.5 16.1667V9.08332C4.5 6.58332 5.75 4.91666 8.66667 4.91666H15.3333C18.25 4.91666 19.5 6.58332 19.5 9.08332Z"
-                          stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                          stroke-linejoin="round"/>
-                        <path d="M11.9963 13.4167H12.0038" stroke="#545454" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        <path d="M8.91185 13.4167H8.91933" stroke="#545454" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        <path d="M8.91185 15.9167H8.91933" stroke="#545454" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </th>
-                <th name="so-chung-tu">
-                  <div>
-                    <span>Số chứng từ</span>
-                    <div>
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </th>
-                <th name="header">
-                  <div>
-                    <span>Header</span>
-                    <div>
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </th>
-                <th name="loai-chung-tu">
-                  <div>
-                    <span>Loại chứng từ</span>
-                    <div>
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </th>
-                <th name="doi-tuong">
-                  <div>
-                    <span>Đối tượng</span>
-                    <div>
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </th>
-                <th name="dien-giai">
-                  <div>
-                    <span>Diễn giải</span>
-                    <div>
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </th>
-                <th name="tong-tien-hang">
-                  <div>
-                    <span>Tổng tiền hàng</span>
-                    <div>
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </th>
-                <th name="tong-tien-hang-2">
-                  <div>
-                    <span>Tổng tiền hàng 2</span>
-                    <div>
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </th>
-                <th name="thao-tac">
-                  Thao tác
-                </th>
-              </tr>
-              <tr>
-                <th colspan="3" style="text-align: start">Tổng</th>
-                <th></th>
-                <th>144</th>
-                <th></th>
-                <th>666</th>
-                <th></th>
-                <th></th>
-                <th>999999</th>
-                <th></th>
-                <th class="sticky--right">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16 2H8C4 2 2 4 2 8V21C2 21.55 2.45 22 3 22H16C20 22 22 20 22 16V8C22 4 20 2 16 2Z" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M12.91 7.84L7.72004 13.03C7.52004 13.23 7.33004 13.62 7.29004 13.9L7.01004 15.88C6.91004 16.6 7.41004 17.1 8.13004 17L10.11 16.72C10.39 16.68 10.78 16.49 10.98 16.29L16.17 11.1C17.06 10.21 17.49 9.17 16.17 7.85C14.85 6.52 13.81 6.94 12.91 7.84Z" stroke="#333333" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M12.1699 8.58C12.6099 10.15 13.8399 11.39 15.4199 11.83" stroke="#333333" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16 12.9V17.1C16 20.6 14.6 22 11.1 22H6.9C3.4 22 2 20.6 2 17.1V12.9C2 9.4 3.4 8 6.9 8H11.1C14.6 8 16 9.4 16 12.9Z" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M22 6.9V11.1C22 14.6 20.6 16 17.1 16H16V12.9C16 9.4 14.6 8 11.1 8H8V6.9C8 3.4 9.4 2 12.9 2H17.1C20.6 2 22 3.4 22 6.9Z" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 17.75C12.4641 17.75 12.9091 17.9345 13.2373 18.2627C13.5655 18.5909 13.75 19.0359 13.75 19.5C13.75 19.9641 13.5655 20.4091 13.2373 20.7373C12.9091 21.0655 12.4641 21.25 12 21.25C11.5359 21.25 11.0909 21.0655 10.7627 20.7373C10.4345 20.4091 10.25 19.9641 10.25 19.5C10.25 19.0359 10.4345 18.5909 10.7627 18.2627C11.0909 17.9345 11.5359 17.75 12 17.75ZM12 10.25C12.4641 10.25 12.9091 10.4345 13.2373 10.7627C13.5655 11.0909 13.75 11.5359 13.75 12C13.75 12.4641 13.5655 12.9091 13.2373 13.2373C12.9091 13.5655 12.4641 13.75 12 13.75C11.5359 13.75 11.0909 13.5655 10.7627 13.2373C10.4345 12.9091 10.25 12.4641 10.25 12C10.25 11.5359 10.4345 11.0909 10.7627 10.7627C11.0909 10.4345 11.5359 10.25 12 10.25ZM12 2.75C12.4641 2.75 12.9091 2.93451 13.2373 3.2627C13.5655 3.59088 13.75 4.03587 13.75 4.5C13.75 4.96413 13.5655 5.40912 13.2373 5.7373C12.9091 6.06549 12.4641 6.25 12 6.25C11.5359 6.25 11.0909 6.06549 10.7627 5.7373C10.4345 5.40912 10.25 4.96413 10.25 4.5C10.25 4.03587 10.4345 3.59088 10.7627 3.2627C11.0499 2.97551 11.4265 2.79855 11.8271 2.75879L12 2.75Z" fill="#333333" stroke="#333333"/>
-                  </svg>
-                </th>
-              </tr>
-              </thead>
-            </table>
-          </div>
-          <div class="main__fillter" *ngIf="toggles.isFillter">
-            <div class="main__fillter-header">
-              <div class="main__fillter-title">Bộ lọc</div>
-              <div class="main__fillter-title" (click)="toggleOpenClose('isFillter')">
-                <img src="../assets/icons-svg/icon-close.svg" alt="">
-              </div>
-            </div>
-            <div class="main__fillter-main">
-              <div class="custom-select">
-                <div class="custom-select-title">Chọn</div>
-                <div class="select-header" tabindex="0">
-                  <span class="select-placeholder">Nhập khẩu kho</span>
-                  <span class="select-arrow">
-                    <span class="select-arrow">
-                      <img src="../assets/icons-svg/icon-arrow-down.svg" alt="icon-arrow-down">
-                    </span>
-                  </span>
-                </div>
-
-                <ul class="select-options">
-                  <li>Trong nước nhập kho</li>
-                  <li>Trang nước không nhập kho</li>
-                  <li class="active">Nhập khẩu nhập kho</li>
-                  <li>Nhập khẩu không nhập kho</li>
-                  <li>Mua hàng - Tiền mặt</li>
-                  <li>Mua hàng - Chuyển khoản</li>
-                </ul>
-              </div>
-
-              <div class="custom-select">
-                <div class="custom-select-title">Chọn</div>
-                <div class="select-header" tabindex="0">
-                  <span class="select-placeholder">VNĐ</span>
-                  <span class="select-arrow">
-                    <img src="../assets/icons-svg/icon-arrow-down.svg" alt="icon-arrow-down">
-                  </span>
-                </div>
-                <ul class="select-options">
-                  <li>Trong nước nhập kho</li>
-                  <li>Trang nước không nhập kho</li>
-                  <li class="active">Nhập khẩu nhập kho</li>
-                  <li>Nhập khẩu không nhập kho</li>
-                  <li>Mua hàng - Tiền mặt</li>
-                  <li>Mua hàng - Chuyển khoản</li>
-                </ul>
-              </div>
-
-              <div class="calendar-select">
-                <div class="calendar-select-title">Từ ngày - đến ngày</div>
-                <input type="text" class="select-header" placeholder="dd/mm/yyyy-dd/mm/yyyy" [(ngModel)]="displayRange"
-                       (input)="autoFormatRange($event)">
-                <span class="select-arrow" (click)="toggleOpenClose('isCalendar')">
-                  <img src="../assets/icons-svg/icon-calendar.svg" alt="icon-arrow-down">
-                </span>
-                <div class="calendar" *ngIf="toggles.isCalendar ">
-                  <div class="calendar__main">
-                    <div class="calendar__main-left">
-                      <ul>
-                        <li
-                          *ngFor="let opt of selectOptions"
-                          [class.active]="selectedOption ===  opt.value"
-                          (click)="onSelect(opt)"
-                        >
-                          {{ opt.label }}
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="calendar__main-right">
-                      <div class="calendar-select">
-                        <div class="calendar-select-title">Từ ngày - đến ngày</div>
-                        <input type="text" class="select-header" placeholder="dd/mm/yyyy-dd/mm/yyyy"
-                               [(ngModel)]="displayRange" (input)="autoFormatRange($event)">
-                        <span class="select-arrow">
-                          <img src="../assets/icons-svg/icon-calendar.svg" alt="icon-arrow-down">
-                        </span>
-                      </div>
+                      <span>Ngày chứng từ</span>
                       <div>
-                        <p-calendar [(ngModel)]="dateRange" selectionMode="range" [readonlyInput]="true"
-                                    [showIcon]="true" [numberOfMonths]="2" [inline]="true" dateFormat="dd/mm/yy"
-                                    (ngModelChange)="onCalendarChange($event)">
-                        </p-calendar>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.66675 3.66666V6.16666" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M15.3333 3.66666V6.16666" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M4.91675 9.57501H19.0834" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                          <path
+                            d="M19.5 9.08332V16.1667C19.5 18.6667 18.25 20.3333 15.3333 20.3333H8.66667C5.75 20.3333 4.5 18.6667 4.5 16.1667V9.08332C4.5 6.58332 5.75 4.91666 8.66667 4.91666H15.3333C18.25 4.91666 19.5 6.58332 19.5 9.08332Z"
+                            stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M11.9963 13.4167H12.0038" stroke="#545454" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M8.91185 13.4167H8.91933" stroke="#545454" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M8.91185 15.9167H8.91933" stroke="#545454" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        </svg>
                       </div>
                     </div>
-                  </div>
-
-                  <div class="calendar__action">
-                    <div class="calendar__action-cancel">Hủy bỏ</div>
-                    <div class="calendar__action-submit">Áp dụng</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="custom-select">
-                <div class="select-header" tabindex="0">
-                  <span class="select-placeholder">Trạng thái</span>
-                  <span class="select-arrow">
-                    <span class="select-arrow">
-                      <img src="../assets/icons-svg/icon-arrow-down.svg" alt="icon-arrow-down">
-                    </span>
-                  </span>
-                </div>
-
-                <ul class="select-options">
-                  <li>Nhập khẩu không nhập kho</li>
-                  <li>Mua hàng - Chuyển khoản</li>
-                </ul>
-              </div>
-
-              <div class="object-select">
-                <div class="select-header" tabindex="0">
-                  <span class="select-placeholder">Đối tượng</span>
-                  <span class="select-arrow">
-                    <span class="select-arrow">
-                      <img src="../assets/icons-svg/icon-arrow-down.svg" alt="icon-arrow-down">
-                    </span>
-                  </span>
-                </div>
-                <div class="objects">
-                  <table>
-                    <thead>
-                    <tr>
-                      <th>Mã đối tượng</th>
-                      <th>Tên đối tượng</th>
-                      <th>Tên trường 1</th>
-                      <th>Tên trường 2</th>
-                      <th>Tên trường 3</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td>CTCP-01</td>
-                      <td>Công ty xây dựng an toàn</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>CTCP-01</td>
-                      <td>Công ty xây dựng an toàn</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>CTCP-01</td>
-                      <td>Công ty xây dựng an toàn</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="main__fillter-action">
-              <div class="main__fillter-cancel">Bỏ lọc</div>
-              <div class="main__fillter-submit">Lọc</div>
-            </div>
+                  </th>
+                  <th name="ngay-hach-toan">
+                    <div>
+                      <span>Ngày hạch toán</span>
+                      <div>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8.66675 3.66666V6.16666" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M15.3333 3.66666V6.16666" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M4.91675 9.57501H19.0834" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                          <path
+                            d="M19.5 9.08332V16.1667C19.5 18.6667 18.25 20.3333 15.3333 20.3333H8.66667C5.75 20.3333 4.5 18.6667 4.5 16.1667V9.08332C4.5 6.58332 5.75 4.91666 8.66667 4.91666H15.3333C18.25 4.91666 19.5 6.58332 19.5 9.08332Z"
+                            stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M11.9963 13.4167H12.0038" stroke="#545454" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M8.91185 13.4167H8.91933" stroke="#545454" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M8.91185 15.9167H8.91933" stroke="#545454" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
+                  </th>
+                  <th name="so-chung-tu">
+                    <div>
+                      <span>Số chứng từ</span>
+                      <div>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z"
+                            stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
+                  </th>
+                  <th name="header">
+                    <div>
+                      <span>Header</span>
+                      <div>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z"
+                            stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
+                  </th>
+                  <th name="loai-chung-tu">
+                    <div>
+                      <span>Loại chứng từ</span>
+                      <div>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z"
+                            stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
+                  </th>
+                  <th name="doi-tuong">
+                    <div>
+                      <span>Đối tượng</span>
+                      <div>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z"
+                            stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
+                  </th>
+                  <th name="dien-giai">
+                    <div>
+                      <span>Diễn giải</span>
+                      <div>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z"
+                            stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
+                  </th>
+                  <th name="tong-tien-hang">
+                    <div>
+                      <span>Tổng tiền hàng</span>
+                      <div>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z"
+                            stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
+                  </th>
+                  <th name="tong-tien-hang-2">
+                    <div>
+                      <span>Tổng tiền hàng 2</span>
+                      <div>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M4.49992 1.75H15.4999C16.4166 1.75 17.1666 2.5 17.1666 3.41667V5.25C17.1666 5.91667 16.7499 6.75 16.3333 7.16667L12.7499 10.3333C12.2499 10.75 11.9166 11.5833 11.9166 12.25V15.8333C11.9166 16.3333 11.5833 17 11.1666 17.25L9.99992 18C8.91659 18.6667 7.41658 17.9167 7.41658 16.5833V12.1667C7.41658 11.5833 7.08325 10.8333 6.74992 10.4167L3.58325 7.08333C3.16659 6.66667 2.83325 5.91667 2.83325 5.41667V3.5C2.83325 2.5 3.58325 1.75 4.49992 1.75Z"
+                            stroke="#545454" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M9.10833 1.75L5 8.33333" stroke="#545454" stroke-width="1.5" stroke-miterlimit="10"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                    </div>
+                  </th>
+                  <th name="thao-tac" class="sticky--right">
+                    Thao tác
+                  </th>
+                </tr>
+                <tr>
+                  <th colspan="2" style="text-align: start" class="sticky--left">Tổng</th>
+                  <th></th>
+                  <th name="ngay-hach-toan">144</th>
+                  <th></th>
+                  <th>666</th>
+                  <th></th>
+                  <th></th>
+                  <th>999999</th>
+                  <th></th>
+                  <th></th>
+                  <th class="sticky--right">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M16 2H8C4 2 2 4 2 8V21C2 21.55 2.45 22 3 22H16C20 22 22 20 22 16V8C22 4 20 2 16 2Z"
+                        stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      <path
+                        d="M12.91 7.84L7.72004 13.03C7.52004 13.23 7.33004 13.62 7.29004 13.9L7.01004 15.88C6.91004 16.6 7.41004 17.1 8.13004 17L10.11 16.72C10.39 16.68 10.78 16.49 10.98 16.29L16.17 11.1C17.06 10.21 17.49 9.17 16.17 7.85C14.85 6.52 13.81 6.94 12.91 7.84Z"
+                        stroke="#333333" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path d="M12.1699 8.58C12.6099 10.15 13.8399 11.39 15.4199 11.83" stroke="#333333"
+                        stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16 12.9V17.1C16 20.6 14.6 22 11.1 22H6.9C3.4 22 2 20.6 2 17.1V12.9C2 9.4 3.4 8 6.9 8H11.1C14.6 8 16 9.4 16 12.9Z"
+                        stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      <path
+                        d="M22 6.9V11.1C22 14.6 20.6 16 17.1 16H16V12.9C16 9.4 14.6 8 11.1 8H8V6.9C8 3.4 9.4 2 12.9 2H17.1C20.6 2 22 3.4 22 6.9Z"
+                        stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M12 17.75C12.4641 17.75 12.9091 17.9345 13.2373 18.2627C13.5655 18.5909 13.75 19.0359 13.75 19.5C13.75 19.9641 13.5655 20.4091 13.2373 20.7373C12.9091 21.0655 12.4641 21.25 12 21.25C11.5359 21.25 11.0909 21.0655 10.7627 20.7373C10.4345 20.4091 10.25 19.9641 10.25 19.5C10.25 19.0359 10.4345 18.5909 10.7627 18.2627C11.0909 17.9345 11.5359 17.75 12 17.75ZM12 10.25C12.4641 10.25 12.9091 10.4345 13.2373 10.7627C13.5655 11.0909 13.75 11.5359 13.75 12C13.75 12.4641 13.5655 12.9091 13.2373 13.2373C12.9091 13.5655 12.4641 13.75 12 13.75C11.5359 13.75 11.0909 13.5655 10.7627 13.2373C10.4345 12.9091 10.25 12.4641 10.25 12C10.25 11.5359 10.4345 11.0909 10.7627 10.7627C11.0909 10.4345 11.5359 10.25 12 10.25ZM12 2.75C12.4641 2.75 12.9091 2.93451 13.2373 3.2627C13.5655 3.59088 13.75 4.03587 13.75 4.5C13.75 4.96413 13.5655 5.40912 13.2373 5.7373C12.9091 6.06549 12.4641 6.25 12 6.25C11.5359 6.25 11.0909 6.06549 10.7627 5.7373C10.4345 5.40912 10.25 4.96413 10.25 4.5C10.25 4.03587 10.4345 3.59088 10.7627 3.2627C11.0499 2.97551 11.4265 2.79855 11.8271 2.75879L12 2.75Z"
+                        fill="#333333" stroke="#333333" />
+                    </svg>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let transaction of pagedTransactions">
+                  <td [attr.name]="'checkbox'">
+                    <div>
+                      <input type="checkbox" class="checkbox">
+                    </div>
+                  </td>
+                  <td [attr.name]="'stt'">{{transaction?.id}}</td>
+                  <td class="text-left">{{ transaction.ngayChungTu }}</td>
+                  <td [attr.name]="'ngay-hach-toan'" class="text-left">{{ transaction.ngayHachToan }}</td>
+                  <td class="text-right">{{ transaction.soChungTu }}</td>
+                  <td class="text-right">{{ transaction.soHoaDon }}</td>
+                  <td class="text-left">{{ transaction.dienGiai }}</td>
+                  <td class="text-left" style="max-width: 330px;">{{ transaction.doiTuong }}</td>
+                  <td class="text-left">{{ transaction.loaiChungTu }}</td>
+                  <td class="text-right">{{ transaction.soTien }}</td>
+                  <td class="text-right">{{ transaction.soTien }}</td>
+                  <td class="sticky--right">
+                    <div class="items-actions">
+                      <div><img src="../assets/icons/icon-message-edit.png" alt="icon-message-edit"></div>
+                      <div><img src="../assets/icons/icon-copy.png" alt="icon-copy"></div>
+                      <div><img src="../assets/icons/icon-dot-column.png" alt="icon-dot-column"></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-      <!--      <div class="main__table-pagination">-->
-      <!--        <div class="main__table-pagination-info">-->
-      <!--          <div>Tổng số: <span>18</span> bản ghi</div>-->
-      <!--          <div class="option">-->
-      <!--            <div><span style="font-weight:600; color: #050B12;">18</span> bản ghi/trang</div>-->
-      <!--            <img src="../assets/icons/icon-arrow-down-bl.png" alt="icon-arrow-down-bl">-->
+      <div class="main__table-pagination">
+        <div class="main__table-pagination-info">
+          <div>Tổng số: <span>18</span> bản ghi</div>
+          <div class="option">
+            <div><span style="font-weight:600; color: #050B12;">18</span> bản ghi/trang</div>
+            <img src="../assets/icons/icon-arrow-down-bl.png" alt="icon-arrow-down-bl">
 
-      <!--            <ul>-->
-      <!--              <li>option 1</li>-->
-      <!--              <li>option 2</li>-->
-      <!--              <li>option 3</li>-->
-      <!--              <li>option 4</li>-->
-      <!--            </ul>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--        <div class="main__table-pagination-controls">-->
-      <!--          <button class="page-btn" (click)="prevPage()" [disabled]="currentPage === 1">-->
-      <!--            <img src="../assets/icons/icon-arrow-left.png" alt="icon-arrow-left">-->
-      <!--          </button>-->
-      <!--          &lt;!&ndash; <button class="page-btn active">1</button>-->
-      <!--          <button class="page-btn">2</button>-->
-      <!--          <button class="page-btn">3</button>-->
-      <!--          <button class="page-btn">4</button>-->
-      <!--          <span class="ellipsis">-->
-      <!--            <img src="../assets/icons/icon-dot-bl.png" alt="icon-Dot">-->
-      <!--          </span>-->
-      <!--          <button class="page-btn">12</button> &ndash;&gt;-->
-      <!--          <ng-container *ngFor="let page of visiblePages">-->
-      <!--            <ng-container *ngIf="page !== 0; else dots">-->
-      <!--              <button class="page-btn" [class.active]="currentPage === page" (click)="goToPage(page)">-->
-      <!--                {{ page }}-->
-      <!--              </button>-->
-      <!--            </ng-container>-->
+            <ul>
+              <li>option 1</li>
+              <li>option 2</li>
+              <li>option 3</li>
+              <li>option 4</li>
+            </ul>
+          </div>
+        </div>
+        <div class="main__table-pagination-controls">
+          <button class="page-btn" (click)="prevPage()" [disabled]="currentPage === 1">
+            <img src="../assets/icons/icon-arrow-left.png" alt="icon-arrow-left">
+          </button>
+          <ng-container *ngFor="let page of visiblePages">
+            <ng-container *ngIf="page !== 0; else dots">
+              <button class="page-btn" [class.active]="currentPage === page" (click)="goToPage(page)">
+                {{ page }}
+              </button>
+            </ng-container>
 
-      <!--            &lt;!&ndash; dấu ... &ndash;&gt;-->
-      <!--            <ng-template #dots>-->
-      <!--              <span class="ellipsis">-->
-      <!--                <img src="../assets/icons/icon-dot-bl.png" alt="icon-dot" />-->
-      <!--              </span>-->
-      <!--            </ng-template>-->
-      <!--          </ng-container>-->
-      <!--          <button class="page-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">-->
-      <!--            <img src="../assets/icons/icon-arrow-right.png" alt="icon-arrow-right">-->
-      <!--          </button>-->
-      <!--        </div>-->
-      <!--      </div>-->
+            <!-- &lt;!&ndash; dấu ... &ndash;&gt; -->
+            <ng-template #dots>
+              <span class="ellipsis">
+                <img src="../assets/icons/icon-dot-bl.png" alt="icon-dot" />
+              </span>
+            </ng-template>
+          </ng-container>
+          <button class="page-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
+            <img src="../assets/icons/icon-arrow-right.png" alt="icon-arrow-right">
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </main>
-
-
-
-
