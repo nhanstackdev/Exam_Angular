@@ -14,6 +14,7 @@ import { StickyColsDirective } from './directives/sticky-cols.directive';
 import { TableComponent } from './pages/table/table.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ToastComponent } from './pages/toast/toast.component';
+import { DialogComponent } from './pages/dialog/dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { ToastComponent } from './pages/toast/toast.component';
     HomeComponent,
     StickyColsDirective,
     TableComponent,
-    ToastComponent
+    ToastComponent,
+    DialogComponent
   ],
   imports: [
     FontAwesomeModule,

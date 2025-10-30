@@ -1,0 +1,116 @@
+.dialog-close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.dialog-light {
+    position: relative;
+    min-width: 410px;
+    min-height: 173px;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 16px;
+    padding: 0 16px;
+    color: black;
+
+    .dialog-main {
+        margin-top: 40px;
+        display: flex;
+        gap: 10px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid #E6E6E6;
+
+        .dialog-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .dialog-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .dialog-header {
+                font-weight: 600;
+            }
+
+            .dialog-text {
+                font-weight: 400;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .dialog-button {
+        cursor: pointer;
+        font-weight: 600;
+        padding: 8px 16px;
+        color: white;
+        border-radius: 8px;
+        background-color: #FF5500;
+        width: fit-content;
+        margin-top: 16px;
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+.dialog-dark {
+    position: relative;
+    min-width: 410px;
+    min-height: 173px;
+    border-radius: 8px;
+    background-color: #333333;
+    font-size: 16px;
+    padding: 0 16px;
+    color: white;
+
+    .dialog-main {
+        margin-top: 40px;
+        display: flex;
+        gap: 10px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid #E6E6E6;
+
+        .dialog-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .dialog-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .dialog-header {
+                font-weight: 600;
+            }
+
+            .dialog-text {
+                font-weight: 400;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .dialog-button {
+        cursor: pointer;
+        font-weight: 600;
+        padding: 8px 16px;
+        color: white;
+        border-radius: 8px;
+        background-color: #FF5500;
+        width: fit-content;
+        margin-top: 16px;
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+}
